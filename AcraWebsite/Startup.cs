@@ -43,6 +43,7 @@ namespace AcraWebsite
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseHangfireDashboard();
             }
             else
             {
@@ -64,7 +65,6 @@ namespace AcraWebsite
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            //app.UseHangfireDashboard();
             RecurringJob.AddOrUpdate<RefreshDataJob>(_ => _.Process(), "*/10 * * * *");
         }
     }
