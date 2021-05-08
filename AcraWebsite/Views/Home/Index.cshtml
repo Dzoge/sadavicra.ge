@@ -18,7 +18,7 @@
                     <option value="">ყველა რეგიონი</option>
                     @foreach (var municipality in Model.Overview.Municipalities)
                     {
-                        <option value="@(municipality.RegionId)" selected="@(municipality.Id == Model.FilterRegionId)">@(municipality.RegionName)</option>
+                        <option value="@(municipality.RegionId)" selected="@(municipality.RegionId == Model.FilterRegionId)">@(municipality.RegionName)</option>
                     }
                 </select>
                 <div class="dropdown__arrow">
