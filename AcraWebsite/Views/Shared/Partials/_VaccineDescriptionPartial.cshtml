@@ -1,6 +1,9 @@
 ﻿@model Vaccine
 @{
-    var lines = Model?.Description?.Split('\n');
+    var lines = Model?.Description?
+        .Split(new char[] {'\n'}, StringSplitOptions.RemoveEmptyEntries)
+        .Where(t=>!String.IsNullOrWhiteSpace(t))
+        .ToArray();
 }
 
 @if (lines?.Length > 0)
