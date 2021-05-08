@@ -65,7 +65,7 @@ namespace AcraWebsite
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            RecurringJob.AddOrUpdate<RefreshDataJob>(_ => _.Process(), "*/10 * * * *");
+            RecurringJob.AddOrUpdate<RefreshDataJob>(_ => _.Process(), "*/2 * * * *");
         }
     }
 }
