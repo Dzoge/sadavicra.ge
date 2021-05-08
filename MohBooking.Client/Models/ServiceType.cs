@@ -1,47 +1,47 @@
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace MohBooking.Client
 {
     public class ServiceType
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        [JsonProperty("key")]
+        [JsonPropertyName("key")]
         public string Key { get; set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonProperty("limit")]
+        [JsonPropertyName("limit")]
         public int? Limit { get; set; }
 
-        //[JsonProperty("minAge")]
+        //[JsonPropertyName("minAge")]
         //public int MinAge { get; set; }
 
-        [JsonProperty("allowed")]
+        [JsonPropertyName("allowed")]
         public int? Allowed { get; set; }
 
-        //[JsonProperty("published")]
+        //[JsonPropertyName("published")]
         //public bool Published { get; set; }
 
-        //[JsonProperty("sameProvider")]
+        //[JsonPropertyName("sameProvider")]
         //public bool SameProvider { get; set; }
 
-        //[JsonProperty("allowForeigner")]
+        //[JsonPropertyName("allowForeigner")]
         //public bool AllowForeigner { get; set; }
 
-        //[JsonProperty("ignoreAgeWhenDoctor")]
+        //[JsonPropertyName("ignoreAgeWhenDoctor")]
         //public bool IgnoreAgeWhenDoctor { get; set; }
 
-        [JsonProperty("minBookingDays")]
+        [JsonPropertyName("minBookingDays")]
         public int? MinBookingDays { get; set; }
 
-        [JsonProperty("maxBookingDays")]
+        [JsonPropertyName("maxBookingDays")]
         public int? MaxBookingDays { get; set; }
 
-        //[JsonProperty("immunizationID")]
+        //[JsonPropertyName("immunizationID")]
         //public string ImmunizationId { get; set; }
     }
 }

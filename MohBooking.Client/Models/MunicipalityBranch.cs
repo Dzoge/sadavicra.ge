@@ -1,37 +1,37 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace MohBooking.Client
 {
     public class MunicipalityBranch
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        [JsonProperty("parentID")]
+        [JsonPropertyName("parentID")]
         public string ParentId { get; set; }
 
-        [JsonProperty("tax")]
+        [JsonPropertyName("tax")]
         public string Tax { get; set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonProperty("address")]
+        [JsonPropertyName("address")]
         public string Address { get; set; }
 
-        [JsonProperty("regionID")]
+        [JsonPropertyName("regionID")]
         public string RegionId { get; set; }
 
-        [JsonProperty("municipality")]
+        [JsonPropertyName("municipality")]
         public string Municipality { get; set; }
 
-        [JsonProperty("municipalityID")]
+        [JsonPropertyName("municipalityID")]
         public string MunicipalityId { get; set; }
 
-        [JsonProperty("settlement")]
+        [JsonPropertyName("settlement")]
         public string Settlement { get; set; }
 
-        [JsonProperty("settlementID")]
+        [JsonPropertyName("settlementID")]
         public string SettlementId { get; set; }
 
     }
