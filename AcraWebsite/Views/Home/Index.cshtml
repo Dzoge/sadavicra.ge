@@ -1,14 +1,23 @@
 ﻿@model HomeViewModel
 
 <div class="mb-5">
-    @if (Model.Overview != null)
+
+    @if (Model.Overview == null)
+    {
+        <p class="text-center">მონაცემები არ გვაქვს, ვცდილობთ განავაახლოთ...</p>
+        <p class="text-center">რემდენიმე წამი დაგველოდე 😕</p>
+        <script>
+            setTimeout(function () { window.location.reload(true); }, 5000)
+        </script>
+    }
+    else
     {
         foreach (var vaccine in Model.Overview.Vaccines)
         {
             <div class="card mb-4">
                 <div class="card-body">
                     <h5 class="card-title">@(vaccine.Name)</h5>
-                    <h6 class="card-subtitle mb-2 text-muted"><partial name="Partials/_VaccineDescriptionPartial" model="vaccine"/></h6>
+                    <h6 class="card-subtitle mb-2 text-muted"><partial name="Partials/_VaccineDescriptionPartial" model="vaccine" /></h6>
 
                     @if (vaccine.Municipalities != null)
                     {
@@ -32,7 +41,7 @@
                                                 </span>
                                             </li>
                                         }
-                                     }
+                                    }
                                 </ul>
                             </p>
                         }
