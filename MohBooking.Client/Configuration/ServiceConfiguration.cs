@@ -18,7 +18,6 @@ namespace MohBooking.Client
                     client.DefaultRequestHeaders.Add("sec-fetch-dest", "empty");
                     client.DefaultRequestHeaders.Add("sec-fetch-mode", "cors");
                     client.DefaultRequestHeaders.Add("sec-fetch-site", "same-origin");
-                    client.DefaultRequestHeaders.Add("securitynumber", "60949641360");
                     client.DefaultRequestHeaders.UserAgent.TryParseAdd("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.27 Safari/537.36");
                 });
 

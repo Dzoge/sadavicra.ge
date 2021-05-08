@@ -8,6 +8,7 @@ namespace MohBooking.Client
 {
     public class MohBookingClient : IMohBookingClient
     {
+        private static Random _random = new Random();
         private readonly HttpClient _httpClient;
 
         public MohBookingClient(HttpClient httpClient)
@@ -59,9 +60,19 @@ namespace MohBooking.Client
 
         private async Task<TResult> ProcessRequestAsync<TResult>(HttpRequestMessage requestMessage)
         {
+            requestMessage.Headers.Add("securitynumber", GenerateSecurityNumber());
             var responseMessage = await _httpClient.SendAsync(requestMessage);
             responseMessage.EnsureSuccessStatusCode();
             return await responseMessage.Content.ReadFromJsonAsync<TResult>();
+        }
+
+        private string GenerateSecurityNumber()
+        {
+            DateTime now = DateTime.Now;
+            int dateValue = now.Year * now.Month * now.Day;
+            double randomVal = Math.Floor(0.5305393530878462f * 1000000f);
+            long finalValue = (long)(dateValue * randomVal);
+            return finalValue.ToString();
         }
     }
 }
