@@ -18,7 +18,12 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="wwwroot\data\" />
+      <Content Update="wwwroot\data\data-fallback.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Update="wwwroot\img\fb-shareimage.jpg">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>

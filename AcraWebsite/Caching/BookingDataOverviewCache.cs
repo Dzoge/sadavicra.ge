@@ -3,22 +3,24 @@ using Microsoft.Extensions.Logging;
 using MohBooking.Client;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace AcraWebsite.Caching
 {
     public class BookingDataOverviewCache : IBookingDataOverviewCache
     {
-        public const int _sleepIntervalMs = 500;
+        public const int _sleepIntervalMs = 0;
 
         private readonly IMohBookingClient _mohBookingClient;
         private readonly ILogger<BookingDataOverviewCache> _logger;
-        private readonly object _dataLocker = new object();
+        private readonly object _dataLocker;
 
         private BookingDataOverview _cachedData;
-        private Thread _loadingThread = null;
+        private Thread _loadingThread;
 
         public BookingDataOverviewCache(
             IMohBookingClient mohBookingClient,
@@ -27,6 +29,7 @@ namespace AcraWebsite.Caching
         {
             _mohBookingClient = mohBookingClient;
             _logger = logger;
+            _dataLocker = new object();
             InitiateDataReload();
         }
 
@@ -58,7 +61,11 @@ namespace AcraWebsite.Caching
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Failed to load data from MOH");
-                return;
+
+                if (_cachedData != null)
+                    return;
+
+                data = GetFallbackData();
             }
 
             lock (_dataLocker)
@@ -140,7 +147,6 @@ namespace AcraWebsite.Caching
             }
 
             model.LastUpdateDt = DateTimeOffset.Now;
-
             return model;
         }
 
@@ -161,6 +167,13 @@ namespace AcraWebsite.Caching
             }
 
             return null;
+        }
+
+        private BookingDataOverview GetFallbackData()
+        {
+            var fileContent = File.ReadAllText("wwwroot/data/data-fallback.json");
+            var fallbackData = JsonConvert.DeserializeObject<BookingDataOverview>(fileContent);
+            return fallbackData;
         }
     }
 }
