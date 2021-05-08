@@ -129,7 +129,7 @@ namespace AcraWebsite.Caching
                 }
             }
 
-            model.LastUpdateDt = DateTimeOffset.UtcNow;
+            model.LastUpdateDt = DateTimeOffset.Now;
 
             return model;
         }
