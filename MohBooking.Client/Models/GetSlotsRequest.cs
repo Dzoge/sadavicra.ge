@@ -1,23 +1,23 @@
 using System;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace MohBooking.Client
 {
     public class GetSlotsRequest
     {
-        [JsonProperty("branchID")]
+        [JsonPropertyName("branchID")]
         public string BranchId { get; set; }
 
-        [JsonProperty("startDate")]
+        [JsonPropertyName("startDate")]
         public DateTime? StartDate { get; set; }
 
-        [JsonProperty("endDate")]
+        [JsonPropertyName("endDate")]
         public DateTime? EndDate { get; set; }
 
-        [JsonProperty("regionID")]
+        [JsonPropertyName("regionID")]
         public string RegionId { get; set; }
 
-        [JsonProperty("serviceID")]
+        [JsonPropertyName("serviceID")]
         public string ServiceId { get; set; }
     }
 }

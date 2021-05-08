@@ -1,171 +1,171 @@
 using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace MohBooking.Client
 {
     public class Region
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        //[JsonProperty("olD_ID")]
+        //[JsonPropertyName("olD_ID")]
         //public double? OlDID { get; set; }
 
-        [JsonProperty("parentID")]
+        [JsonPropertyName("parentID")]
         public string ParentID { get; set; }
 
-        [JsonProperty("parent")]
+        [JsonPropertyName("parent")]
         public Region Parent { get; set; }
 
-        [JsonProperty("code")]
+        [JsonPropertyName("code")]
         public string Code { get; set; }
 
-        [JsonProperty("craCode")]
+        [JsonPropertyName("craCode")]
         public string CraCode { get; set; }
 
-        [JsonProperty("geoName")]
+        [JsonPropertyName("geoName")]
         public string GeoName { get; set; }
 
-        [JsonProperty("engName")]
+        [JsonPropertyName("engName")]
         public string EngName { get; set; }
 
-        [JsonProperty("newCode")]
+        [JsonPropertyName("newCode")]
         public string NewCode { get; set; }
 
-        [JsonProperty("typeID")]
+        [JsonPropertyName("typeID")]
         public string TypeID { get; set; }
 
-        [JsonProperty("areaType")]
+        [JsonPropertyName("areaType")]
         public AreaType AreaType { get; set; }
 
-        //[JsonProperty("recordType")]
+        //[JsonPropertyName("recordType")]
         //public int? RecordType { get; set; }
 
-        //[JsonProperty("dateCreated")]
+        //[JsonPropertyName("dateCreated")]
         //public DateTime? DateCreated { get; set; }
 
-        //[JsonProperty("dateChanged")]
+        //[JsonPropertyName("dateChanged")]
         //public object DateChanged { get; set; }
 
-        //[JsonProperty("dateDeleted")]
+        //[JsonPropertyName("dateDeleted")]
         //public object DateDeleted { get; set; }
     }
     
      public class AreaType
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        [JsonProperty("geoName")]
+        [JsonPropertyName("geoName")]
         public string GeoName { get; set; }
 
-        [JsonProperty("engName")]
+        [JsonPropertyName("engName")]
         public string EngName { get; set; }
 
-        //[JsonProperty("code")]
+        //[JsonPropertyName("code")]
         //public int? Code { get; set; }
 
-        //[JsonProperty("level")]
+        //[JsonPropertyName("level")]
         //public int? Level { get; set; }
 
-        //[JsonProperty("dateCreated")]
+        //[JsonPropertyName("dateCreated")]
         //public DateTime? DateCreated { get; set; }
 
-        //[JsonProperty("dateChanged")]
+        //[JsonPropertyName("dateChanged")]
         //public object DateChanged { get; set; }
 
-        //[JsonProperty("dateDeleted")]
+        //[JsonPropertyName("dateDeleted")]
         //public object DateDeleted { get; set; }
     }
 
     public class PhoneIndexType
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        //[JsonProperty("dateCreated")]
+        //[JsonPropertyName("dateCreated")]
         //public DateTime? DateCreated { get; set; }
 
-        //[JsonProperty("dateChanged")]
+        //[JsonPropertyName("dateChanged")]
         //public object DateChanged { get; set; }
 
-        //[JsonProperty("dateDeleted")]
+        //[JsonPropertyName("dateDeleted")]
         //public object DateDeleted { get; set; }
     }
 
     public class PhoneIndex
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        //[JsonProperty("value")]
+        //[JsonPropertyName("value")]
         //public int? Value { get; set; }
 
-        [JsonProperty("phoneIndexType")]
+        [JsonPropertyName("phoneIndexType")]
         public PhoneIndexType PhoneIndexType { get; set; }
 
-        //[JsonProperty("dateCreated")]
+        //[JsonPropertyName("dateCreated")]
         //public DateTime? DateCreated { get; set; }
 
-        //[JsonProperty("dateChanged")]
+        //[JsonPropertyName("dateChanged")]
         //public object DateChanged { get; set; }
 
-        //[JsonProperty("dateDeleted")]
+        //[JsonPropertyName("dateDeleted")]
         //public object DateDeleted { get; set; }
     }
 
     //public class Parent
     //{
-    //    [JsonProperty("id")]
+    //    [JsonPropertyName("id")]
     //    public string Id { get; set; }
 
-    //    [JsonProperty("olD_ID")]
+    //    [JsonPropertyName("olD_ID")]
     //    public object OlDID { get; set; }
 
-    //    [JsonProperty("parentID")]
+    //    [JsonPropertyName("parentID")]
     //    public object ParentId { get; set; }
 
-    //    [JsonProperty("parent")]
+    //    [JsonPropertyName("parent")]
     //    public object ParentElem { get; set; }
 
-    //    [JsonProperty("code")]
+    //    [JsonPropertyName("code")]
     //    public object Code { get; set; }
 
-    //    [JsonProperty("craCode")]
+    //    [JsonPropertyName("craCode")]
     //    public object CraCode { get; set; }
 
-    //    [JsonProperty("geoName")]
+    //    [JsonPropertyName("geoName")]
     //    public string GeoName { get; set; }
 
-    //    [JsonProperty("engName")]
+    //    [JsonPropertyName("engName")]
     //    public object EngName { get; set; }
 
-    //    [JsonProperty("newCode")]
+    //    [JsonPropertyName("newCode")]
     //    public string NewCode { get; set; }
 
-    //    [JsonProperty("typeID")]
+    //    [JsonPropertyName("typeID")]
     //    public string TypeID { get; set; }
 
-    //    [JsonProperty("areaType")]
+    //    [JsonPropertyName("areaType")]
     //    public AreaType AreaType { get; set; }
 
-    //    [JsonProperty("phoneIndexes")]
+    //    [JsonPropertyName("phoneIndexes")]
     //    public List<PhoneIndex> PhoneIndexes { get; set; }
 
-    //    [JsonProperty("recordType")]
+    //    [JsonPropertyName("recordType")]
     //    public int RecordType { get; set; }
 
-    //    [JsonProperty("dateCreated")]
+    //    [JsonPropertyName("dateCreated")]
     //    public DateTime DateCreated { get; set; }
 
-    //    [JsonProperty("dateChanged")]
+    //    [JsonPropertyName("dateChanged")]
     //    public object DateChanged { get; set; }
 
-    //    [JsonProperty("dateDeleted")]
+    //    [JsonPropertyName("dateDeleted")]
     //    public object DateDeleted { get; set; }
     //}
 }

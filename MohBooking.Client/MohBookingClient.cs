@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace MohBooking.Client
 {
@@ -53,7 +52,7 @@ namespace MohBooking.Client
             };
             var requestMessage = new HttpRequestMessage(HttpMethod.Post, "Booking/GetSlots")
             {
-                Content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json")
+                Content = JsonContent.Create(request)
             };
             return ProcessRequestAsync<IEnumerable<SlotResponse>>(requestMessage);
         }
@@ -62,16 +61,7 @@ namespace MohBooking.Client
         {
             var responseMessage = await _httpClient.SendAsync(requestMessage);
             responseMessage.EnsureSuccessStatusCode();
-            var responseContent = await responseMessage.Content.ReadAsStringAsync();
-            try
-            {
-                var responseData = JsonConvert.DeserializeObject<TResult>(responseContent);
-                return responseData;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            return await responseMessage.Content.ReadFromJsonAsync<TResult>();
         }
     }
 }

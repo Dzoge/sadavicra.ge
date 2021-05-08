@@ -1,117 +1,117 @@
 using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace MohBooking.Client
 {
     public class SlotResponse
     {
-        [JsonProperty("roomID")]
+        [JsonPropertyName("roomID")]
         public string RoomId { get; set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonProperty("onlyQueue")]
+        [JsonPropertyName("onlyQueue")]
         public bool OnlyQueue { get; set; }
 
-        [JsonProperty("schedules")]
+        [JsonPropertyName("schedules")]
         public List<Schedule> Schedules { get; set; }
     }
 
     public class Slot
     {
-        [JsonProperty("organizationID")]
+        [JsonPropertyName("organizationID")]
         public string OrganizationId { get; set; }
 
-        [JsonProperty("branchID")]
+        [JsonPropertyName("branchID")]
         public string BranchId { get; set; }
 
-        //[JsonProperty("personID")]
+        //[JsonPropertyName("personID")]
         //public object PersonId { get; set; }
 
-        [JsonProperty("scheduleDate")]
+        [JsonPropertyName("scheduleDate")]
         public DateTime? ScheduleDate { get; set; }
 
-        [JsonProperty("duration")]
+        [JsonPropertyName("duration")]
         public int? Duration { get; set; }
 
-        [JsonProperty("state")]
+        [JsonPropertyName("state")]
         public string State { get; set; }
 
-        [JsonProperty("value")]
+        [JsonPropertyName("value")]
         public string Value { get; set; }
 
-        [JsonProperty("key")]
+        [JsonPropertyName("key")]
         public string Key { get; set; }
 
-        [JsonProperty("roomID")]
+        [JsonPropertyName("roomID")]
         public string RoomID { get; set; }
 
-        [JsonProperty("taken")]
+        [JsonPropertyName("taken")]
         public bool? Taken { get; set; }
 
-        [JsonProperty("reserved")]
+        [JsonPropertyName("reserved")]
         public bool? Reserved { get; set; }
 
-        //[JsonProperty("scheduleDateTicks")]
+        //[JsonPropertyName("scheduleDateTicks")]
         //public long? ScheduleDateTicks { get; set; }
 
-        [JsonProperty("scheduleDateName")]
+        [JsonPropertyName("scheduleDateName")]
         public string ScheduleDateName { get; set; }
     }
 
     public class ScheduleDate
     {
-        [JsonProperty("organizationID")]
+        [JsonPropertyName("organizationID")]
         public string OrganizationId { get; set; }
 
-        [JsonProperty("branchID")]
+        [JsonPropertyName("branchID")]
         public string BranchId { get; set; }
 
-        //[JsonProperty("personID")]
+        //[JsonPropertyName("personID")]
         //public object PersonId { get; set; }
 
-        [JsonProperty("roomID")]
+        [JsonPropertyName("roomID")]
         public string RoomId { get; set; }
 
-        //[JsonProperty("dateTicks")]
+        //[JsonPropertyName("dateTicks")]
         //public long? DateTicks { get; set; }
 
-        [JsonProperty("date")]
+        [JsonPropertyName("date")]
         public DateTime? Dt { get; set; }
 
-        [JsonProperty("weekName")]
+        [JsonPropertyName("weekName")]
         public string WeekName { get; set; }
 
-        [JsonProperty("dateName")]
+        [JsonPropertyName("dateName")]
         public string DateName { get; set; }
 
-        [JsonProperty("slots")]
+        [JsonPropertyName("slots")]
         public List<Slot> Slots { get; set; }
     }
 
     public class Schedule
     {
-        [JsonProperty("roomID")]
+        [JsonPropertyName("roomID")]
         public string RoomId { get; set; }
 
-        [JsonProperty("organizationID")]
+        [JsonPropertyName("organizationID")]
         public string OrganizationId { get; set; }
 
-        [JsonProperty("branchID")]
+        [JsonPropertyName("branchID")]
         public string BranchId { get; set; }
 
-        //[JsonProperty("personID")]
+        //[JsonPropertyName("personID")]
         //public object PersonId { get; set; }
 
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        //[JsonProperty("title")]
+        //[JsonPropertyName("title")]
         //public string Title { get; set; }
 
-        [JsonProperty("dates")]
+        [JsonPropertyName("dates")]
         public List<ScheduleDate> Dates { get; set; }
     }
 }
