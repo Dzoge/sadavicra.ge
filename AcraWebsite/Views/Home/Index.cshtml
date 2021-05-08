@@ -12,16 +12,55 @@
     }
     else
     {
-        foreach (var vaccine in Model.Overview.Vaccines)
+        <div class="filters-wrap my-4">
+            <div class="dropdown__single">
+                <select>
+                    <option value="value">ყველა რეგიონი</option>
+                    <option value="value">თბილისი</option>
+                    <option value="value">ქუთაისი</option>
+                    <option value="value">ფოთი</option>
+                    <option value="value">რუსთავი</option>
+                    <option value="value">გორი</option>
+                    <option value="value">სამტრედია</option>
+                    <option value="value">ლანჩხუთი</option>
+                    <option value="value">მესტია</option>
+                    <option value="value">ბათუმი</option>
+                </select>
+                <div class="dropdown__arrow">
+                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.846" style="enable-background:new 0 0 451.847 451.846;" xml:space="preserve">
+                        <g>
+                            <path d="M248.292,106.406l194.281,194.29c12.365,12.359,12.365,32.391,0,44.744c-12.354,12.354-32.391,12.354-44.744,0 L225.923,173.529L54.018,345.44c-12.36,12.354-32.395,12.354-44.748,0c-12.359-12.354-12.359-32.391,0-44.75L203.554,106.4 c6.18-6.174,14.271-9.259,22.369-9.259C234.018,97.141,242.115,100.232,248.292,106.406z" />
+	                    </g>
+                    </svg>
+                </div>
+            </div>
+            <div class="dropdown__single">
+                <select>
+                    <option value="value">ყველა ვაქცინა</option>
+                    <option value="value">ფაიზერი</option>
+                    <option value="value">სინოფარმი</option>
+                    <option value="value">ასტრაზენეკა</option>
+                </select>
+                <div class="dropdown__arrow">
+                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.846" style="enable-background:new 0 0 451.847 451.846;" xml:space="preserve">
+                    <g>
+                    <path d="M248.292,106.406l194.281,194.29c12.365,12.359,12.365,32.391,0,44.744c-12.354,12.354-32.391,12.354-44.744,0 L225.923,173.529L54.018,345.44c-12.36,12.354-32.395,12.354-44.748,0c-12.359-12.354-12.359-32.391,0-44.75L203.554,106.4 c6.18-6.174,14.271-9.259,22.369-9.259C234.018,97.141,242.115,100.232,248.292,106.406z" />
+	                    </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        @foreach (var vaccine in Model.Overview.Vaccines)
         {
             <div class="card mb-4" data-vaccine="@(vaccine.Id)">
-                <div class="card-body">
-                    <h5 class="card-title">@(vaccine.Name)</h5>
-                    <h6 class="card-subtitle mb-2 text-muted"><partial name="Partials/_VaccineDescriptionPartial" model="vaccine" /></h6>
+                <div class="card-header p-4">
+                    <h5 class="card-title mb-4">@(vaccine.Name)</h5>
+                    <h6 class="card-subtitle text-danger"><partial name="Partials/_VaccineDescriptionPartial" model="vaccine" /></h6>
+                </div>
+                <div class="card-body p-4">
 
                     @if (vaccine.Municipalities != null)
                     {
-                        <hr />
                         foreach (var municipality in vaccine.Municipalities)
                         {
                             <p class="card-text" data-region="@(municipality.RegionId)">

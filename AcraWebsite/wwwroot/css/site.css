@@ -69,3 +69,52 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+
+.filters-wrap {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.dropdown__single + .dropdown__single {
+    margin-left: 15px;
+}
+
+.dropdown__single {
+    position: relative;
+}
+
+.dropdown__single select {
+    padding: 10px 15px;
+    font-size: 15px;
+    line-height: 17px;
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,.125);
+    color: #212529;
+    outline: none;
+    width: 200px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+.dropdown__arrow {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+    .dropdown__arrow svg {
+        width: 13px;
+        height: 13px;
+        fill: #6c757d;
+        transform: rotate(180deg);
+        transition: all .3s ease;
+    }
+
+.card-subtitle ul {
+    margin-bottom: 0;
+}
