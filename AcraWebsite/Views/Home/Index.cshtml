@@ -18,7 +18,7 @@
                     <option value="">ყველა რეგიონი</option>
                     @foreach (var municipality in Model.Overview.Municipalities)
                     {
-                        <option value="@(municipality.RegionId)">@(municipality.RegionName)</option>
+                        <option value="@(municipality.RegionId)" selected="@(municipality.Id == Model.FilterRegionId)">@(municipality.RegionName)</option>
                     }
                 </select>
                 <div class="dropdown__arrow">
@@ -34,7 +34,8 @@
                     <option value="">ყველა ვაქცინა</option>
                     @foreach (var vaccine in Model.Overview.Vaccines)
                     {
-                        <option value="@(vaccine.Id)">@(vaccine.Name)</option>
+                        string selectedAttribute = "";
+                        <option value="@(vaccine.Id)" selected="@(vaccine.Id == Model.FilterVaccineId)">@(vaccine.Name)</option>
                     }
                 </select>
                 <div class="dropdown__arrow">
