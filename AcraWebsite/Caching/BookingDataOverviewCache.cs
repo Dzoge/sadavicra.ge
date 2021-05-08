@@ -11,6 +11,8 @@ namespace AcraWebsite.Caching
 {
     public class BookingDataOverviewCache : IBookingDataOverviewCache
     {
+        public const int _sleepIntervalMs = 500;
+
         private readonly IMohBookingClient _mohBookingClient;
         private readonly ILogger<BookingDataOverviewCache> _logger;
         private readonly object _dataLocker = new object();
@@ -72,6 +74,8 @@ namespace AcraWebsite.Caching
             model.Vaccines = new List<Vaccine>();
 
             var vaccines = await _mohBookingClient.GetServicesAsync();
+            Thread.Sleep(_sleepIntervalMs);
+
             foreach (var vaccine in vaccines)
             {
                 var vaccineModel = new Vaccine()
@@ -84,6 +88,8 @@ namespace AcraWebsite.Caching
                 model.Vaccines.Add(vaccineModel);
 
                 var regions = await _mohBookingClient.GetRegionsAsync(vaccine.Id);
+                Thread.Sleep(_sleepIntervalMs);
+
                 foreach (var region in regions)
                 {
                     var municipalities = await _mohBookingClient.GetMunicipalitiesAsync(vaccine.Id, region.Id);
@@ -99,9 +105,13 @@ namespace AcraWebsite.Caching
                         };
 
                         var branches = await _mohBookingClient.GetMunicipalityBranchesAsync(vaccine.Id, municipality.Id);
+                        Thread.Sleep(_sleepIntervalMs);
+
                         foreach (var branch in branches)
                         {
                             var slots = await _mohBookingClient.GetSlotsAsync(vaccine.Id, region.Id, branch.Id);
+                            Thread.Sleep(_sleepIntervalMs);
+
                             var availableSlots = slots
                                 .SelectMany(s => s.Schedules)
                                 .SelectMany(s => s.Dates)
