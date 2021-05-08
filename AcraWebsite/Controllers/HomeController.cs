@@ -25,9 +25,9 @@ namespace AcraWebsite.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Index()
+        public IActionResult Index(string vaccine = null, string region = null)
         {
-            var model = new HomeViewModel();
+            var model = new HomeViewModel(vaccine, region);
             model.Overview = _bookingDataOverviewCache.GetAllData();
             return View(model);
         }
