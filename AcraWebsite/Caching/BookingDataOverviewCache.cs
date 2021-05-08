@@ -150,6 +150,12 @@ namespace AcraWebsite.Caching
                 }
             }
 
+            model.Municipalities = model.Vaccines
+                .SelectMany(v => v.Municipalities)
+                .GroupBy(m => m.RegionId)
+                .Select(g => g.First())
+                .ToList();
+
             model.LastUpdateDt = DateTimeOffset.Now;
             return model;
         }

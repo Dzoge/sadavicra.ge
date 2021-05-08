@@ -8,6 +8,7 @@ namespace AcraWebsite.Models
     public class BookingDataOverview
     {
         public List<Vaccine> Vaccines { get; set; }
+        public List<Municipality> Municipalities { get; set; }
         public DateTimeOffset LastUpdateDt { get; set; }
     }
 

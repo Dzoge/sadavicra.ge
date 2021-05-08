@@ -14,17 +14,12 @@
     {
         <div class="filters-wrap my-4">
             <div class="dropdown__single">
-                <select>
-                    <option value="value">ყველა რეგიონი</option>
-                    <option value="value">თბილისი</option>
-                    <option value="value">ქუთაისი</option>
-                    <option value="value">ფოთი</option>
-                    <option value="value">რუსთავი</option>
-                    <option value="value">გორი</option>
-                    <option value="value">სამტრედია</option>
-                    <option value="value">ლანჩხუთი</option>
-                    <option value="value">მესტია</option>
-                    <option value="value">ბათუმი</option>
+                <select id="selectRegion">
+                    <option value="">ყველა რეგიონი</option>
+                    @foreach (var municipality in Model.Overview.Municipalities)
+                    {
+                        <option value="@(municipality.RegionId)">@(municipality.RegionName)</option>
+                    }
                 </select>
                 <div class="dropdown__arrow">
                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.846" style="enable-background:new 0 0 451.847 451.846;" xml:space="preserve">
@@ -35,11 +30,12 @@
                 </div>
             </div>
             <div class="dropdown__single">
-                <select>
-                    <option value="value">ყველა ვაქცინა</option>
-                    <option value="value">ფაიზერი</option>
-                    <option value="value">სინოფარმი</option>
-                    <option value="value">ასტრაზენეკა</option>
+                <select id="selectVaccine">
+                    <option value="">ყველა ვაქცინა</option>   
+                    @foreach (var vaccine in Model.Overview.Vaccines)
+                    {
+                        <option value="@(vaccine.Id)">@(vaccine.Name)</option>
+                    }
                 </select>
                 <div class="dropdown__arrow">
                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.846" style="enable-background:new 0 0 451.847 451.846;" xml:space="preserve">
@@ -63,9 +59,11 @@
                     {
                         foreach (var municipality in vaccine.Municipalities)
                         {
-                            <p class="card-text" data-region="@(municipality.RegionId)">
-                                <b>@(municipality.RegionName) -> @(municipality.Name)</b>
-                                <span class="badge badge-secondary btn-success">@(municipality.AvailableCount) ადგილი</span>
+                            <div class="card-text mb-4" data-region="@(municipality.RegionId)">
+                                <p>
+                                    <b>@(municipality.RegionName) -> @(municipality.Name)</b>
+                                    <span class="badge badge-secondary btn-success">@(municipality.AvailableCount) ადგილი</span>
+                                </p>
                                 <ul class="list-group">
                                     @if (municipality.Locations != null)
                                     {
@@ -82,7 +80,7 @@
                                         }
                                     }
                                 </ul>
-                            </p>
+                            </div>
                         }
                     }
                 </div>

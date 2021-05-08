@@ -118,3 +118,7 @@ body {
 .card-subtitle ul {
     margin-bottom: 0;
 }
+
+.hide {
+    display: none !important;
+}
