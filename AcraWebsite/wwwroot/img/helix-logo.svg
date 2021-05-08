@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21.004" height="14.883" viewBox="0 0 21.004 14.883">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_29" data-name="Path 29" d="M379.061,47.4a.561.561,0,1,0,.561.561h0A.56.56,0,0,0,379.061,47.4Zm0,.889a.33.33,0,0,1-.328-.328.326.326,0,0,1,.328-.324.326.326,0,1,1,0,.652Z" transform="translate(-378.5 -47.4)"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="Path_32" data-name="Path 32" d="M450.567,27.074a.563.563,0,1,0,.073.793.564.564,0,0,0-.073-.793Zm-.565.684a.327.327,0,1,1,.46-.041.33.33,0,0,1-.46.041Z" transform="translate(-449.644 -26.944)"/>
+    </clipPath>
+  </defs>
+  <g id="Helix_New_Logo" data-name="Helix New Logo" transform="translate(-54.052 -26.944)">
+    <path id="Path_25" data-name="Path 25" d="M161.9,277.6" transform="translate(-102.933 -239.232)" fill="#5b4535"/>
+    <path id="_Clipping_Path_" d="M63.133,51.772a4.093,4.093,0,0,0-2.324-1.686c-2.215-.615-4.963.893-6.075,2.885-1.75,3.131-.041,8.45,4.125,10.013,3.883,1.458,8.623-.829,9.676-4.726a7.508,7.508,0,0,0-2.848-7.689c1.094,3.168.488,6.2-1.349,7.5a3.925,3.925,0,0,1-3.336.6,4.051,4.051,0,0,1-2.589-3.414,3.654,3.654,0,0,0,3.186.825,2.978,2.978,0,0,0,2.06-1.8A3.025,3.025,0,0,0,63.133,51.772Z" transform="translate(0 -21.955)" fill="#fdbc16"/>
+    <path id="Path_26" data-name="Path 26" d="M189.1,52.1" transform="translate(-128.893 -24.01)" fill="none" stroke="#3f2d1f" stroke-miterlimit="10" stroke-width="1"/>
+    <path id="Path_27" data-name="Path 27" d="M514.9,173.3" transform="translate(-439.844 -139.686)" fill="#fff"/>
+    <path id="_Clipping_Path_2" d="M286,86.166s3.965-.984,5.146-6.048a9.265,9.265,0,0,0,.169-1.545c.027-1.117-.169-1.262-.082-2.051a4.035,4.035,0,0,1,.93-2.279c.055-.059.109-.118.164-.173a3.577,3.577,0,0,1,.934-.67,2.414,2.414,0,0,1,1.686.984,2.353,2.353,0,0,1,.392,1.6A10.67,10.67,0,0,1,286,86.166Z" transform="translate(-221.377 -44.339)" fill="gray"/>
+    <path id="_Compound_Clipping_Path_3" d="M379.061,47.4a.561.561,0,1,0,.561.561h0A.56.56,0,0,0,379.061,47.4Zm0,.889a.33.33,0,0,1-.328-.328.326.326,0,0,1,.328-.324.326.326,0,1,1,0,.652Z" transform="translate(-309.661 -19.524)" fill="gray"/>
+    <g id="Group_180" data-name="Group 180" transform="translate(68.839 27.876)">
+      <g id="Group_179" data-name="Group 179" transform="translate(0 0)" clip-path="url(#clip-path)">
+        <path id="Path_28" data-name="Path 28" d="M385.73,48.653l.064-.88L384.8,47.5Z" transform="translate(-384.513 -47.495)" fill="gray"/>
+      </g>
+    </g>
+    <path id="Path_30" data-name="Path 30" d="M386.018,49.477a12.835,12.835,0,0,0-.319-1.855c-.21-.866-.387-1.048-.515-1.149a1.238,1.238,0,0,0-.784-.228.714.714,0,0,1,.205-.1.993.993,0,0,1,.706.064,2.462,2.462,0,0,1,1.071,1.149,2.7,2.7,0,0,1,.374,1.846c-.109.492-.456.966-.615.921C386.041,50.093,386.05,49.883,386.018,49.477Z" transform="translate(-315.292 -18.288)" fill="gray"/>
+    <path id="_Compound_Clipping_Path_4" d="M450.567,27.074a.563.563,0,1,0,.073.793.564.564,0,0,0-.073-.793Zm-.565.684a.327.327,0,1,1,.46-.041.33.33,0,0,1-.46.041Z" transform="translate(-377.562 0)" fill="gray"/>
+    <g id="Group_182" data-name="Group 182" transform="translate(72.081 26.944)">
+      <g id="Group_181" data-name="Group 181" transform="translate(0)" clip-path="url(#clip-path-2)">
+        <path id="Path_31" data-name="Path 31" d="M464.7,27.481l.611-.634L464.723,26Z" transform="translate(-464.014 -26.043)" fill="gray"/>
+      </g>
+    </g>
+    <path id="Path_33" data-name="Path 33" d="M438.773,30.523a13.161,13.161,0,0,0,.939-1.632c.392-.8.374-1.053.337-1.212a1.284,1.284,0,0,0-.456-.679.756.756,0,0,1,.223.05.988.988,0,0,1,.5.5,2.478,2.478,0,0,1,.091,1.568,2.7,2.7,0,0,1-.893,1.659c-.4.305-.966.451-1.062.314C438.4,31.011,438.541,30.856,438.773,30.523Z" transform="translate(-366.871 -0.054)" fill="gray"/>
+  </g>
+</svg>
