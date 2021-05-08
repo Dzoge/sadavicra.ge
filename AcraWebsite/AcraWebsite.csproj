@@ -17,4 +17,8 @@
       <ProjectReference Include="..\MohBooking.Client\MohBooking.Client.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="wwwroot\data\" />
+    </ItemGroup>
+
 </Project>
