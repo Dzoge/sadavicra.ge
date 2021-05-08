@@ -1,13 +1,13 @@
 ﻿using AcraWebsite.Models;
 using Microsoft.Extensions.Logging;
 using MohBooking.Client;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace AcraWebsite.Caching
 {
@@ -80,6 +80,7 @@ namespace AcraWebsite.Caching
             int sleepInteval = _cachedData == null
                 ? 0
                 : _defaultSleepIntervalMs;
+
             var model = new BookingDataOverview();
             model.Vaccines = new List<Vaccine>();
 
