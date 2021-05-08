@@ -65,7 +65,7 @@ namespace AcraWebsite
             });
 
             //app.UseHangfireDashboard();
-            RecurringJob.AddOrUpdate<RefreshDataJob>(_ => _.Process(), Cron.Minutely);
+            RecurringJob.AddOrUpdate<RefreshDataJob>(_ => _.Process(), "*/10 * * * *");
         }
     }
 }
