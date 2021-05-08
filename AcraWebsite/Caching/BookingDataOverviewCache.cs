@@ -13,7 +13,7 @@ namespace AcraWebsite.Caching
 {
     public class BookingDataOverviewCache : IBookingDataOverviewCache
     {
-        public const int _sleepIntervalMs = 0;
+        public const int _sleepIntervalMs = 200;
 
         private readonly IMohBookingClient _mohBookingClient;
         private readonly ILogger<BookingDataOverviewCache> _logger;
