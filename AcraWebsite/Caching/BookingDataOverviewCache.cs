@@ -91,7 +91,7 @@ namespace AcraWebsite.Caching
             {
                 var vaccineModel = new Vaccine()
                 {
-                    Id = vaccine.Id,
+                    Id = vaccine.Key,
                     Name = vaccine.Name,
                     Description = GenerateVaccineDescription(vaccine.Id),
                     Municipalities = new List<Municipality>()

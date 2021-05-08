@@ -1,7 +1,7 @@
 ﻿{
   "Vaccines": [
     {
-      "Id": "4bb6c283-3afb-436c-9974-6730cd2a18bd",
+      "Id": "PCR",
       "Name": "კოვიდ 19 ვაქცინაცია (AstraZeneca)",
       "Description": "5 მაისიდან 20.00 სთ-დან იწყება ასტრაზენეკას მე-2 დოზაზე რეგისტრაცია. აცრის ჩატარება შესაძლებელი იქნება 10 მაისიდან. თქვენ შეგიძლიათ დარეგისტრირდეთ მე-2 დოზის მისაღებად ნებისმიერ დაწესებულებაში პირველი აცრიდან 4 - 12 კვირის ინტერვალში. ასაკობრივი შეზღუდვა არ ვრცელდება მათზე, ვინც პირველი დოზით აცრა ჩაიტარა ასტრაზენეკას ვაქცინით.\nდამატებითი ფანჯრები ეტაპობრივად გაიხსნება",
       "Municipalities": [
@@ -14,17 +14,17 @@
             {
               "BranchId": "26e2ab50-ed88-40b1-9b40-6d1d810dd958",
               "BranchName": "შპს მაღალტექნოლოგიური ჰოსპიტალი მედცენტრი",
-              "AvailableCount": 492,
+              "AvailableCount": 490,
               "BranchAddress": "ქ.ბათუმი, პუშკინის ქ.N118/120"
             },
             {
               "BranchId": "1cc40657-dcdd-44fa-8f75-4f1a183febce",
               "BranchName": "შპს \"ბათუმის სამედიცინო ცენტრი\"",
-              "AvailableCount": 563,
+              "AvailableCount": 561,
               "BranchAddress": "ბათუმი, კახაბერის ქ. N36"
             }
           ],
-          "AvailableCount": 1055
+          "AvailableCount": 1051
         },
         {
           "RegionId": "31520d88-870e-485e-a833-5ca9e20e84fa",
@@ -65,23 +65,23 @@
             {
               "BranchId": "d498c105-2c24-4217-8143-17ba88d01c39",
               "BranchName": "სს „ევექსის ჰოსპიტლები“ - მ. იაშვილის სახელობის ბავშვთა ცენტრალური საავადმყოფო",
-              "AvailableCount": 971,
+              "AvailableCount": 969,
               "BranchAddress": "თბილისი, ლუბლიანას ქ. 13/მიხეილ ჭიაურელის ქ. 6 (ყოფ.: ლუბლიანას ქ. 2/6)"
             },
             {
               "BranchId": "89e3d6ec-fbe1-4673-95e1-74203d7f38e4",
               "BranchName": "შპს აკადემიკოს ო. ღუდუშაურის სახელობის ეროვნული სამედიცინო ცენტრი",
-              "AvailableCount": 179,
+              "AvailableCount": 178,
               "BranchAddress": "თბილისი,ნოდარ ბოხუას ქ.N12/ლუბლიანას ქ.N66"
             },
             {
               "BranchId": "9f433fbf-df54-4d7d-a8df-2d653a249ee7",
               "BranchName": "ა(ა)იპ \"ნიუ ვიჟენ საუნივერსიტეტო ჰოსპიტალი\"",
-              "AvailableCount": 403,
+              "AvailableCount": 399,
               "BranchAddress": "თბილისი, ლუბლიანას ქუჩა N13 / მიხეილ ჭიაურელის ქუჩა N6"
             }
           ],
-          "AvailableCount": 1553
+          "AvailableCount": 1546
         },
         {
           "RegionId": "5d129a50-30e9-4b10-8d4d-3febb32ec32c",
@@ -92,11 +92,11 @@
             {
               "BranchId": "e16014e2-ea3f-41a8-a277-6f2bcfc33901",
               "BranchName": "შპს ს. ხეჩინაშვილის სახელობის საუნივერსიტეტო კლინიკა",
-              "AvailableCount": 1245,
+              "AvailableCount": 1238,
               "BranchAddress": "თბილისი, ი. ჭავჭავაძის გამზირი №33"
             }
           ],
-          "AvailableCount": 1245
+          "AvailableCount": 1238
         },
         {
           "RegionId": "5d129a50-30e9-4b10-8d4d-3febb32ec32c",
@@ -107,11 +107,11 @@
             {
               "BranchId": "d043e1d0-4acb-495b-82c3-d9cdc923e588",
               "BranchName": "შპს თბილისის სახელმწიფო სამედიცინო უნივერსიტეტისა და ინგოროყვას მაღალი სამედიცინო ტექნოლოგიების საუნივერსიტეტო კლინიკა",
-              "AvailableCount": 34,
+              "AvailableCount": 27,
               "BranchAddress": "თბილისი, წინანდლის ქ. #9"
             }
           ],
-          "AvailableCount": 34
+          "AvailableCount": 27
         },
         {
           "RegionId": "5d129a50-30e9-4b10-8d4d-3febb32ec32c",
@@ -122,11 +122,11 @@
             {
               "BranchId": "f16c1454-b779-4057-a4eb-e173166acf5a",
               "BranchName": "შპს ნიუ ჰოსპიტალს",
-              "AvailableCount": 791,
+              "AvailableCount": 789,
               "BranchAddress": "თბილისი, გორგასლის/კრწანისის ქ, N 71/12 (თბილისი, აღმაშენებლის 148/111)"
             }
           ],
-          "AvailableCount": 791
+          "AvailableCount": 789
         },
         {
           "RegionId": "5d129a50-30e9-4b10-8d4d-3febb32ec32c",
@@ -137,23 +137,23 @@
             {
               "BranchId": "2301128f-af85-450d-b180-b0eca0a21095",
               "BranchName": "შპს აკადემიკოს ნიკოლოზ ყიფშიძის სახელობის ცენტრალური საუნივერსიტეტო კლინიკა",
-              "AvailableCount": 9582,
+              "AvailableCount": 9541,
               "BranchAddress": "ქ. თბილისი, ვაჟა-ფშაველას  №29"
             },
             {
               "BranchId": "8486a9e6-18aa-41ea-a2a7-269061b8cd11",
               "BranchName": "შპს აკადემიკოს ვახტანგ ბოჭორიშვილის კლინიკა.",
-              "AvailableCount": 458,
+              "AvailableCount": 454,
               "BranchAddress": "თბილისი, ალ. ყაზბეგის გამზირი N16"
             },
             {
               "BranchId": "b3484c29-b0d6-440b-8c91-e8ffcc12cd83",
               "BranchName": "სს ინფექციური პათოლოგიის შიდსისა და კლინიკური იმუნოლოგიის სამეცნიერო-პრაქტიკული ცენტრი",
-              "AvailableCount": 902,
+              "AvailableCount": 895,
               "BranchAddress": "თბილისი, ყაზბეგის №16"
             }
           ],
-          "AvailableCount": 10942
+          "AvailableCount": 10890
         },
         {
           "RegionId": "09c1e04c-c664-4252-a30a-2a71ba72c2e2",
@@ -194,11 +194,11 @@
             {
               "BranchId": "cc24c650-2e60-41c8-acfa-48795793b309",
               "BranchName": "თანამედროვე სამედიცინო ტექნოლოგიების დასავლეთის რეგიონალური ცენტრი",
-              "AvailableCount": 1549,
+              "AvailableCount": 1543,
               "BranchAddress": "ქ.ქუთაისი,ფოთის ქუჩა N40"
             }
           ],
-          "AvailableCount": 1549
+          "AvailableCount": 1543
         },
         {
           "RegionId": "09c1e04c-c664-4252-a30a-2a71ba72c2e2",
@@ -224,11 +224,11 @@
             {
               "BranchId": "d0376b52-af3e-44a7-ba20-208df006c981",
               "BranchName": "შპს „ჯეო ჰოსპიტალს\" - გურჯაანის მრავალპროფილური სამედიცინო ცენტრი",
-              "AvailableCount": 209,
+              "AvailableCount": 206,
               "BranchAddress": "გურჯაანი, მარჯანიშვილის ქ. №35(იყო გურჯაანი, დ. აღმაშენებლის №144 (თბილისი კოსტავას 67, ბინა 71)"
             }
           ],
-          "AvailableCount": 209
+          "AvailableCount": 206
         },
         {
           "RegionId": "d1e285b5-5b60-42c6-9bc2-ac7646a9c96a",
@@ -320,11 +320,11 @@
             {
               "BranchId": "480edfc8-b97e-4db1-b4b7-262d35b63235",
               "BranchName": "სს \"ევექსის ჰოსპიტლები\" - ზუგდიდის რეფერალური ჰოსპიტალი",
-              "AvailableCount": 393,
+              "AvailableCount": 392,
               "BranchAddress": "ზუგდიდი, გამსახურდიას ქ. # 206"
             }
           ],
-          "AvailableCount": 559
+          "AvailableCount": 558
         },
         {
           "RegionId": "acecd83d-fb22-44f9-b69d-3333aceb79a6",
@@ -395,11 +395,11 @@
             {
               "BranchId": "b9524103-a897-43f3-a983-876b78d5d26f",
               "BranchName": "შპს \"კლინიკა რუსთავი\"",
-              "AvailableCount": 778,
+              "AvailableCount": 777,
               "BranchAddress": "რუსთავი, VII მ/რ"
             }
           ],
-          "AvailableCount": 778
+          "AvailableCount": 777
         },
         {
           "RegionId": "ae3b6e33-6cd7-4b24-bf74-865cfabc2839",
@@ -410,7 +410,7 @@
             {
               "BranchId": "70ff295b-df28-4b41-a0d5-00a35e4b4762",
               "BranchName": "შპს გორმედი",
-              "AvailableCount": 358,
+              "AvailableCount": 357,
               "BranchAddress": "გორი, ცხინვალის გზატკეცილი №14"
             },
             {
@@ -420,7 +420,7 @@
               "BranchAddress": "გორი. ჭავჭავაძის N56"
             }
           ],
-          "AvailableCount": 395
+          "AvailableCount": 394
         },
         {
           "RegionId": "ae3b6e33-6cd7-4b24-bf74-865cfabc2839",
@@ -438,10 +438,10 @@
           "AvailableCount": 273
         }
       ],
-      "AvailableCount": 25399
+      "AvailableCount": 25308
     },
     {
-      "Id": "efc7f5d4-f4b1-4095-ad53-717389ea8258",
+      "Id": "CovidPfizer ",
       "Name": "კოვიდ 19 ვაქცინაცია (Pfizer)",
       "Description": "21 აპრილიდან თქვენ შეგიძლიათ დაჯავშნოთ ადგილი ფაიზერის მე-2 დოზის მისაღებად, რისთვისაც უნდა გქონდეთ ჩატარებული 1 დოზით აცრა.\nაუცილებელია, რომ ჯავშანი გააკეთოთ იმავე კლინიკაში სადაც ჩაიატარეთ პირველი აცრა.\nაუცილებელია, რომ ჯავშანი გააკეთოთ 21-30 დღიან შუალედში პირველი აცრიდან და არ ჩაეწეროთ 20 დღიან ინტერვალის გასვლამდე.\nგთხოვთ შეინახეთ ჯავშნის კოდი, ვინაიდან ის დაგჭირდებათ უახლოეს მომავალაში კოვიდ პასპორტის მობილური აპლიკაციის გასააქტიურებლად\n",
       "Municipalities": [
@@ -530,7 +530,7 @@
       "AvailableCount": 2235
     },
     {
-      "Id": "d1eef49b-00b9-4760-9525-6100c168e642",
+      "Id": "Sinopharm",
       "Name": "კოვიდ 19 ვაქცინაცია (Sinopharm)",
       "Description": null,
       "Municipalities": [
@@ -543,11 +543,11 @@
             {
               "BranchId": "fe1e8a6a-969c-4738-994c-8f3e5ade764d",
               "BranchName": "სს \"ევექსის კლინიკები\"-შუახევის კლინიკა",
-              "AvailableCount": 21,
+              "AvailableCount": 18,
               "BranchAddress": "რუსთაველის ქ.N32"
             }
           ],
-          "AvailableCount": 21
+          "AvailableCount": 18
         },
         {
           "RegionId": "31520d88-870e-485e-a833-5ca9e20e84fa",
@@ -558,11 +558,11 @@
             {
               "BranchId": "d676bd9f-4ed5-4000-8a6d-9c7b179618ea",
               "BranchName": "სს \"ევექსის კლინიკები\"-ხულოს კლინიკა",
-              "AvailableCount": 176,
+              "AvailableCount": 171,
               "BranchAddress": "აღმაშენებლის ქ.N1"
             }
           ],
-          "AvailableCount": 176
+          "AvailableCount": 171
         },
         {
           "RegionId": "6d893d1f-3851-4d80-b7fc-020179c8a4c0",
@@ -573,26 +573,11 @@
             {
               "BranchId": "27a0caa0-f03c-49a6-b6aa-d209bdb405d1",
               "BranchName": "შპს რეგიონული ჯანდაცვის ცენტრი-ლენტეხი",
-              "AvailableCount": 118,
+              "AvailableCount": 116,
               "BranchAddress": "ლენტეხი, დავით აღმაშენებლის ქ N1"
             }
           ],
-          "AvailableCount": 118
-        },
-        {
-          "RegionId": "6d893d1f-3851-4d80-b7fc-020179c8a4c0",
-          "RegionName": "რაჭა-ლეჩხუმი და ქვემო სვანეთი",
-          "Id": "62bda91b-2712-49c1-9a19-f4e834aa8c2e",
-          "Name": "ონი",
-          "Locations": [
-            {
-              "BranchId": "4ab737f3-a286-46bd-aa75-2465a5c25f14",
-              "BranchName": "შპს რეგიონული ჯანდაცვის ცენტრი -ონი",
-              "AvailableCount": 1,
-              "BranchAddress": "ონი, ვახტანგ VI ქ. N10"
-            }
-          ],
-          "AvailableCount": 1
+          "AvailableCount": 116
         },
         {
           "RegionId": "6d893d1f-3851-4d80-b7fc-020179c8a4c0",
@@ -618,11 +603,11 @@
             {
               "BranchId": "ec7ef4f5-ce49-4b57-9fc4-5d9216848887",
               "BranchName": "სს \"ევექსის კლინიკები\"-მარტვილის კლინიკა",
-              "AvailableCount": 83,
+              "AvailableCount": 72,
               "BranchAddress": "მშვიდობის ქ.N111"
             }
           ],
-          "AvailableCount": 83
+          "AvailableCount": 72
         },
         {
           "RegionId": "a2a56af7-2f62-4ffa-aa56-038328bd5b32",
@@ -648,11 +633,11 @@
             {
               "BranchId": "4322fc5c-9b50-430f-ab09-56866bf74579",
               "BranchName": "სს \"ევექსის კლინიკები\"-ჩხოროწყუს კლინიკა",
-              "AvailableCount": 203,
+              "AvailableCount": 195,
               "BranchAddress": "ჩხოროწყუ,აღმაშენებლის ქ.N19"
             }
           ],
-          "AvailableCount": 203
+          "AvailableCount": 195
         },
         {
           "RegionId": "a2a56af7-2f62-4ffa-aa56-038328bd5b32",
@@ -663,11 +648,11 @@
             {
               "BranchId": "b553411a-7732-4fc2-a78c-fe2e54d1f1cc",
               "BranchName": "სს,, ევექსის კლინიკები'წალენჯიხისს კლინიკა",
-              "AvailableCount": 223,
+              "AvailableCount": 220,
               "BranchAddress": "ჭურღულიას ქ N6"
             }
           ],
-          "AvailableCount": 223
+          "AvailableCount": 220
         },
         {
           "RegionId": "acecd83d-fb22-44f9-b69d-3333aceb79a6",
@@ -678,11 +663,11 @@
             {
               "BranchId": "5e4bc35a-c360-4a1c-a84d-ef4815a04c1e",
               "BranchName": "სს\"ევექსის კლინიკები\"-ადიგენის კლინიკა",
-              "AvailableCount": 177,
+              "AvailableCount": 162,
               "BranchAddress": "დაბა ადიგენი,ბალახაშვილის ქ N11"
             }
           ],
-          "AvailableCount": 177
+          "AvailableCount": 162
         },
         {
           "RegionId": "acecd83d-fb22-44f9-b69d-3333aceb79a6",
@@ -693,11 +678,11 @@
             {
               "BranchId": "8b63a2ff-bb83-4e5b-9a87-22698e2aa3e4",
               "BranchName": "სს\"ევექსის კლინიკები\"-ასპინძის კლინიკა",
-              "AvailableCount": 151,
+              "AvailableCount": 144,
               "BranchAddress": "დაბა ასპინძა"
             }
           ],
-          "AvailableCount": 151
+          "AvailableCount": 144
         },
         {
           "RegionId": "acecd83d-fb22-44f9-b69d-3333aceb79a6",
@@ -708,15 +693,15 @@
             {
               "BranchId": "869212c2-344d-45a3-8b53-311112b62839",
               "BranchName": "სს \"ევექსის ჰოსპიტლები\"  – ახალქალაქის ჰოსპიტალი",
-              "AvailableCount": 146,
+              "AvailableCount": 141,
               "BranchAddress": "დ. აღმაშენებლის ქ N 31"
             }
           ],
-          "AvailableCount": 146
+          "AvailableCount": 141
         }
       ],
-      "AvailableCount": 1480
+      "AvailableCount": 1420
     }
   ],
-  "LastUpdateDt": "2021-05-08T19:04:11.5354713+04:00"
+  "LastUpdateDt": "2021-05-08T20:31:47.0350152+04:00"
 }

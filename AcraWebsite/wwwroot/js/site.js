@@ -1,4 +1,14 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
+﻿function filterVaccines(vaccineId) {
+    filterElems('vaccine', vaccineId);
+}
+function filterRegions(regionId) {
+    filterElems('region', regionId);
+}
+function filterElems(dataSetName, value) {
+    [].forEach.call(querySelectorAll('[data-' + dataSetName + ']'), (elem) => {
+        var sholdShow = !value
+            ? true
+            : elem.dataset[dataSetName] = value;
+        elem.classList.toggle('hide', sholdShow);
+    });
+}

@@ -14,7 +14,7 @@
     {
         foreach (var vaccine in Model.Overview.Vaccines)
         {
-            <div class="card mb-4">
+            <div class="card mb-4" data-vaccine="@(vaccine.Id)">
                 <div class="card-body">
                     <h5 class="card-title">@(vaccine.Name)</h5>
                     <h6 class="card-subtitle mb-2 text-muted"><partial name="Partials/_VaccineDescriptionPartial" model="vaccine" /></h6>
@@ -24,7 +24,7 @@
                         <hr />
                         foreach (var municipality in vaccine.Municipalities)
                         {
-                            <p class="card-text">
+                            <p class="card-text" data-region="@(municipality.RegionId)">
                                 <b>@(municipality.RegionName) -> @(municipality.Name)</b>
                                 <span class="badge badge-secondary btn-success">@(municipality.AvailableCount) ადგილი</span>
                                 <ul class="list-group">
