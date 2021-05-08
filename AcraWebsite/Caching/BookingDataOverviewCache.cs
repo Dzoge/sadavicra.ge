@@ -77,6 +77,7 @@ namespace AcraWebsite.Caching
 
         private async Task<BookingDataOverview> LoadData()
         {
+            throw new Exception();
             var model = new BookingDataOverview();
             model.Vaccines = new List<Vaccine>();
 
