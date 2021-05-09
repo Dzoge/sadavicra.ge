@@ -77,7 +77,9 @@
                                                     </span>
                                                     @(location.BranchName) (@(location.BranchAddress))
                                                 </span>
-                                                <button type="button" data-service-id="@vaccine.ServiceId" data-region-id="@municipality.RegionId" data-branch-id="@location.BranchId" class="btn btn-primary btn-sm float-right getslot">ადგილები</button>
+                                                <button type="button" data-service-id="@vaccine.ServiceId" data-region-id="@municipality.RegionId" data-branch-id="@location.BranchId" class="btn btn-secondary btn-sm float-right getslot">
+                                                    ადგილები <i class="bi bi-chevron-down"></i>
+                                                </button>
                                             </li>
                                         }
                                     }
