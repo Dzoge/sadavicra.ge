@@ -1,0 +1,40 @@
+﻿@model IEnumerable<OpenSlotModel>
+
+@foreach (var item in Model)
+{
+<div class="row">
+    <div class="col-12">
+        <h4>@item.Name</h4>
+    </div>
+</div>
+
+<table class="table table-bordered border-primary">
+    <thead>
+        <tr>
+            <th scope="col">თარიღი</th>
+            <th scope="col">კვირის დღე</th>
+            <th scope="col">თავისუფალი დროები</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var date in item.Dates)
+        {
+        <tr>
+            <th>@date.Dt?.ToString("dd-MM-yyyy")</th>
+            <th scope="row">@date.WeekName</th>
+            <td>
+                <ul class="list-group list-group-horizontal">
+                    @foreach (var slot in date.Slots)
+                    {
+
+                        <li class="list-group-item">@slot.Value</li>
+
+
+                    }
+                </ul>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+}
