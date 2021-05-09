@@ -1,10 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcraWebsite", "AcraWebsite\AcraWebsite.csproj", "{A4458BB1-E4EE-4225-967B-A694BD8485F9}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AcraWebsite", "AcraWebsite\AcraWebsite.csproj", "{A4458BB1-E4EE-4225-967B-A694BD8485F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MohBooking.Client", "MohBooking.Client\MohBooking.Client.csproj", "{422F03E6-55DC-4A04-B228-371F6A3AB7EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MohBooking.Client", "MohBooking.Client\MohBooking.Client.csproj", "{422F03E6-55DC-4A04-B228-371F6A3AB7EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MohBooking.Client.TestApp", "MohBooking.Client.TestApp\MohBooking.Client.TestApp.csproj", "{A753B241-B570-4138-ABB3-E26142F4504E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MohBooking.Client.TestApp", "MohBooking.Client.TestApp\MohBooking.Client.TestApp.csproj", "{A753B241-B570-4138-ABB3-E26142F4504E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +27,11 @@ Global
 		{A753B241-B570-4138-ABB3-E26142F4504E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A753B241-B570-4138-ABB3-E26142F4504E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A753B241-B570-4138-ABB3-E26142F4504E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AAFDCAB0-721E-43BE-BA02-A4A12667A5DC}
 	EndGlobalSection
 EndGlobal
