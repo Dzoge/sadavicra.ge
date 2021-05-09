@@ -1,5 +1,3 @@
-using System;
-
 namespace AcraWebsite.Models
 {
     public class ErrorViewModel
