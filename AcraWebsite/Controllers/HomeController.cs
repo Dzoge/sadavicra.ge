@@ -1,4 +1,5 @@
-﻿using AcraWebsite.Caching;
+﻿using System.Threading.Tasks;
+using AcraWebsite.Caching;
 using AcraWebsite.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -32,6 +33,7 @@ namespace AcraWebsite.Controllers
             return View(model);
         }
 
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)
         public async Task<IActionResult> GetSlot(string branchId, string regionId, string serviceId)
         {
             var slots = await _openSlotService.GetOpenSlots(serviceId, regionId, branchId);
