@@ -4,7 +4,7 @@ namespace AcraWebsite.Services
 {
     public interface IBookingDataCacheService
     {
-        BookingDataOverview GetAllData();
+        BookingDataCache GetAllData();
         void InitiateDataReload();
     }
 }

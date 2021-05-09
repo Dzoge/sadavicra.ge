@@ -23,7 +23,7 @@ namespace AcraWebsite.Controllers
         public IActionResult Index(string vaccine = null, string region = null)
         {
             var model = new HomeViewModel(vaccine, region);
-            model.Overview = _bookingDataOverviewCache.GetAllData();
+            model.Cache = _bookingDataOverviewCache.GetAllData();
             return View(model);
         }
 
@@ -31,7 +31,7 @@ namespace AcraWebsite.Controllers
         public IActionResult GetSlot(string branchId, string regionId, string serviceId)
         {
             var data = _bookingDataOverviewCache.GetAllData();
-            var slots = data.SlotData[$"{serviceId}-{regionId}-{branchId}"];
+            var slots = data.GetSlotData(serviceId, regionId, branchId);
             return PartialView("~/Views/Shared/Partials/_OpenSlotPartial.cshtml", slots);
         }
 

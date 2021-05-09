@@ -2,7 +2,7 @@
 
 <div class="mb-5">
 
-    @if (Model.Overview == null)
+    @if (Model.Cache == null)
     {
         <p class="text-center">მონაცემები არ გვაქვს, ვცდილობთ განავაახლოთ...</p>
         <p class="text-center">რემდენიმე წამი დაგველოდე 😕</p>
@@ -16,7 +16,7 @@
             <div class="dropdown__single">
                 <select id="selectRegion">
                     <option value="">ყველა რეგიონი</option>
-                    @foreach (var municipality in Model.Overview.Municipalities)
+                    @foreach (var municipality in Model.Cache.Municipalities)
                     {
                         <option value="@(municipality.RegionId)" selected="@(municipality.RegionId == Model.FilterRegionId)">@(municipality.RegionName)</option>
                     }
@@ -32,7 +32,7 @@
             <div class="dropdown__single">
                 <select id="selectVaccine">
                     <option value="">ყველა ვაქცინა</option>
-                    @foreach (var vaccine in Model.Overview.Vaccines)
+                    @foreach (var vaccine in Model.Cache.Vaccines)
                     {
                         string selectedAttribute = "";
                         <option value="@(vaccine.Id)" selected="@(vaccine.Id == Model.FilterVaccineId)">@(vaccine.Name)</option>
@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-        @foreach (var vaccine in Model.Overview.Vaccines)
+        @foreach (var vaccine in Model.Cache.Vaccines)
         {
             <div class="card mb-4" data-vaccine="@(vaccine.Id)">
                 <div class="card-header p-4">

@@ -16,7 +16,7 @@ namespace AcraWebsite.Models
                 FilterRegionId = regionFilter;
         }
 
-        public BookingDataOverview Overview { get; set; }
+        public BookingDataCache Cache { get; set; }
 
         private bool IsFilterParameterValueValid(string value)
         {

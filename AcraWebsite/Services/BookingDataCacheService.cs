@@ -19,7 +19,7 @@ namespace AcraWebsite.Services
         private readonly ILogger<BookingDataCacheService> _logger;
         private readonly object _dataLocker;
 
-        private BookingDataOverview _cachedData;
+        private BookingDataCache _cachedData;
         private Thread _loadingThread;
 
         public BookingDataCacheService(
@@ -33,7 +33,7 @@ namespace AcraWebsite.Services
             InitiateDataReload();
         }
 
-        public BookingDataOverview GetAllData()
+        public BookingDataCache GetAllData()
         {
             lock (_dataLocker)
                 return _cachedData;
@@ -53,7 +53,7 @@ namespace AcraWebsite.Services
 
         private async Task LoadingThreadWorker()
         {
-            BookingDataOverview data;
+            BookingDataCache data;
             try
             {
                 data = await LoadData();
@@ -75,15 +75,14 @@ namespace AcraWebsite.Services
             }
         }
 
-        private async Task<BookingDataOverview> LoadData()
+        private async Task<BookingDataCache> LoadData()
         {
             int sleepInteval = _cachedData == null
                 ? 0
                 : _defaultSleepIntervalMs;
 
-            var model = new BookingDataOverview();
+            var model = new BookingDataCache();
             model.Vaccines = new List<Vaccine>();
-            model.SlotData = new Dictionary<string, IEnumerable<OpenSlotModel>>();
 
             var vaccines = await _mohBookingClient.GetServicesAsync();
             Thread.Sleep(sleepInteval);
@@ -136,7 +135,7 @@ namespace AcraWebsite.Services
                             if (!availableSlots.Any())
                                 continue;
 
-                            model.SlotData.Add($"{vaccine.Id}-{region.Id}-{branch.Id}", MapSlotResponse(slots));
+                            model.AddSlotData(vaccine.Id, region.Id, branch.Id, MapSlotResponse(slots));
 
                             var modelLocation = new VaccineLocation()
                             {
@@ -183,10 +182,10 @@ namespace AcraWebsite.Services
             return null;
         }
 
-        private BookingDataOverview GetFallbackData()
+        private BookingDataCache GetFallbackData()
         {
             var fileContent = File.ReadAllText("wwwroot/data/data-fallback.json");
-            var fallbackData = JsonConvert.DeserializeObject<BookingDataOverview>(fileContent);
+            var fallbackData = JsonConvert.DeserializeObject<BookingDataCache>(fileContent);
             return fallbackData;
         }
 
@@ -194,27 +193,27 @@ namespace AcraWebsite.Services
         {
             try
             {
-               return slots.Select(x =>
-                    new OpenSlotModel()
-                    {
-                        Name = x.Name,
-                        Dates = x.Schedules.FirstOrDefault().Dates
-                        .Where(x => x.Slots.Any(s => s.Taken != true && s.Reserved != true))
-                        .Select(y => new Models.ScheduleDate()
-                        {
-                            DateName = y.DateName,
-                            Dt = y.Dt,
-                            WeekName = y.WeekName,
-                            Slots = y.Slots.Where(s => s.Taken != true && s.Reserved != true).Select(z => new Models.Slot()
-                            {
-                                Value = z.Value
+                return slots.Select(x =>
+                     new OpenSlotModel()
+                     {
+                         Name = x.Name,
+                         Dates = x.Schedules.FirstOrDefault().Dates
+                         .Where(x => x.Slots.Any(s => s.Taken != true && s.Reserved != true))
+                         .Select(y => new Models.ScheduleDate()
+                         {
+                             DateName = y.DateName,
+                             Dt = y.Dt,
+                             WeekName = y.WeekName,
+                             Slots = y.Slots.Where(s => s.Taken != true && s.Reserved != true).Select(z => new Models.Slot()
+                             {
+                                 Value = z.Value
 
-                            })
-                        })
-                    }
-                ).AsEnumerable();
+                             })
+                         })
+                     }
+                 ).AsEnumerable();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _logger.LogError(ex, "Failed to map SlotResponse to OpenSlotModel");
                 return new List<OpenSlotModel>();
