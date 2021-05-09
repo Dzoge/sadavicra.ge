@@ -103,6 +103,10 @@
             <div class="modal-body" id="modal-content">
             </div>
             <div class="modal-footer">
+                <a href="https://booking.moh.gov.ge/Hmis/Hmis.Queue.Web/#/register" class="btn btn-primary">
+                    ვიზიტის დაჯავშნა
+                    <i class="bi bi-check2-circle"></i>
+                </a>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">დახურვა</button>
             </div>
         </div>
@@ -113,6 +117,6 @@
     <script>
     filterVaccines("@(Model.FilterVaccineId)");
     filterRegions("@(Model.FilterRegionId)");
-        var slotUrl = "@Url.Action("GetSlot", "Home")";
+    var slotUrl = "@Url.Action("GetSlot", "Home")";
     </script>
 }

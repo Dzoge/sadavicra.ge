@@ -83,6 +83,7 @@ namespace AcraWebsite.Services
 
             var model = new BookingDataOverview();
             model.Vaccines = new List<Vaccine>();
+            model.SlotData = new Dictionary<string, IEnumerable<OpenSlotModel>>();
 
             var vaccines = await _mohBookingClient.GetServicesAsync();
             Thread.Sleep(sleepInteval);
@@ -135,6 +136,8 @@ namespace AcraWebsite.Services
                             if (!availableSlots.Any())
                                 continue;
 
+                            model.SlotData.Add($"{vaccine.Id}-{region.Id}-{branch.Id}", MapSlotResponse(slots));
+
                             var modelLocation = new VaccineLocation()
                             {
                                 BranchId = branch.Id,
@@ -185,6 +188,37 @@ namespace AcraWebsite.Services
             var fileContent = File.ReadAllText("wwwroot/data/data-fallback.json");
             var fallbackData = JsonConvert.DeserializeObject<BookingDataOverview>(fileContent);
             return fallbackData;
+        }
+
+        private IEnumerable<OpenSlotModel> MapSlotResponse(IEnumerable<SlotResponse> slots)
+        {
+            try
+            {
+               return slots.Select(x =>
+                    new OpenSlotModel()
+                    {
+                        Name = x.Name,
+                        Dates = x.Schedules.FirstOrDefault().Dates
+                        .Where(x => x.Slots.Any(s => s.Taken != true && s.Reserved != true))
+                        .Select(y => new Models.ScheduleDate()
+                        {
+                            DateName = y.DateName,
+                            Dt = y.Dt,
+                            WeekName = y.WeekName,
+                            Slots = y.Slots.Where(s => s.Taken != true && s.Reserved != true).Select(z => new Models.Slot()
+                            {
+                                Value = z.Value
+
+                            })
+                        })
+                    }
+                ).AsEnumerable();
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex, "Failed to map SlotResponse to OpenSlotModel");
+                return new List<OpenSlotModel>();
+            }
         }
     }
 }
