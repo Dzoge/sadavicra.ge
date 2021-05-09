@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using AcraWebsite.Caching;
+﻿using AcraWebsite.Caching;
+using AcraWebsite.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using AcraWebsite.Models;
 
 namespace AcraWebsite.Controllers
 {
