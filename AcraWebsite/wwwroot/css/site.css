@@ -262,16 +262,3 @@ body {
         opacity: 0;
     }
 }
-
-
-        .dropdown__single select {
-            width: 100%;
-            min-width: initial;
-            font-size: 13px;
-        }
-
-        .dropdown__single + .dropdown__single {
-            margin-left: 0;
-            margin-top: 10px;
-        }
-}
