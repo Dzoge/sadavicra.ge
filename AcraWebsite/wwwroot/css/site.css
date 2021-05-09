@@ -262,3 +262,17 @@ body {
         opacity: 0;
     }
 }
+
+
+.slot-times {
+    width: 75px;
+    border-top-width: 1px;
+    border-left-width: 0;
+    position: relative;
+    display: block;
+    padding: .5rem 1rem;
+    color: #212529;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+}

@@ -28,7 +28,6 @@ namespace AcraWebsite
             services.AddMohBookingClientServices();
 
             services.AddSingleton<IBookingDataCacheService, BookingDataCacheService>();
-            services.AddTransient<IOpenSlotService, OpenSlotService>();
 
             services.AddHangfire(x => x.UseMemoryStorage());
             services.AddHangfireServer();

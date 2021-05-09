@@ -9,6 +9,7 @@ namespace AcraWebsite.Models
         public List<Vaccine> Vaccines { get; set; }
         public List<Municipality> Municipalities { get; set; }
         public DateTimeOffset LastUpdateDt { get; set; }
+        public Dictionary<string, IEnumerable<OpenSlotModel>> SlotData { get; set; }
     }
 
     public class Vaccine
