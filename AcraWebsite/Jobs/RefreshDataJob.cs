@@ -1,13 +1,13 @@
-﻿using AcraWebsite.Caching;
+﻿using AcraWebsite.Services;
 
 namespace AcraWebsite.Jobs
 {
     public class RefreshDataJob
     {
-        private readonly IBookingDataOverviewCache _bookingDataOverviewCache;
+        private readonly IBookingDataCacheService _bookingDataOverviewCache;
 
         public RefreshDataJob(
-            IBookingDataOverviewCache bookingDataOverviewCache
+            IBookingDataCacheService bookingDataOverviewCache
             )
         {
             _bookingDataOverviewCache = bookingDataOverviewCache;

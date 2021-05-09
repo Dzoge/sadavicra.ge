@@ -9,22 +9,22 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace AcraWebsite.Caching
+namespace AcraWebsite.Services
 {
-    public class BookingDataOverviewCache : IBookingDataOverviewCache
+    public class BookingDataCacheService : IBookingDataCacheService
     {
         public const int _defaultSleepIntervalMs = 100;
 
         private readonly IMohBookingClient _mohBookingClient;
-        private readonly ILogger<BookingDataOverviewCache> _logger;
+        private readonly ILogger<BookingDataCacheService> _logger;
         private readonly object _dataLocker;
 
         private BookingDataOverview _cachedData;
         private Thread _loadingThread;
 
-        public BookingDataOverviewCache(
+        public BookingDataCacheService(
             IMohBookingClient mohBookingClient,
-            ILogger<BookingDataOverviewCache> logger
+            ILogger<BookingDataCacheService> logger
         )
         {
             _mohBookingClient = mohBookingClient;

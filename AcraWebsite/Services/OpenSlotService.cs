@@ -1,11 +1,10 @@
 ﻿using AcraWebsite.Models;
 using MohBooking.Client;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AcraWebsite.Service
+namespace AcraWebsite.Services
 {
     public interface IOpenSlotService
     {
@@ -25,14 +24,14 @@ namespace AcraWebsite.Service
 
         public async Task<IEnumerable<OpenSlotModel>> GetOpenSlots(string serviceId, string regionId, string branchId)
         {
-            var slot =  await _mohBookingClient.GetSlotsAsync(serviceId, regionId, branchId);
+            var slot = await _mohBookingClient.GetSlotsAsync(serviceId, regionId, branchId);
 
             IEnumerable<OpenSlotModel> model = slot.Select(x =>
                 new OpenSlotModel()
                 {
                     Name = x.Name,
                     Dates = x.Schedules.FirstOrDefault().Dates
-                    .Where(x=>x.Slots.Any(s=>s.Taken != true && s.Reserved != true))
+                    .Where(x => x.Slots.Any(s => s.Taken != true && s.Reserved != true))
                     .Select(y => new Models.ScheduleDate()
                     {
                         DateName = y.DateName,

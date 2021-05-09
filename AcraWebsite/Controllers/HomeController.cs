@@ -1,22 +1,19 @@
-﻿using System.Threading.Tasks;
-using AcraWebsite.Caching;
-using AcraWebsite.Models;
+﻿using AcraWebsite.Models;
+using AcraWebsite.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using AcraWebsite.Models;
-using MohBooking.Client;
-using AcraWebsite.Service;
+using System.Threading.Tasks;
 
 namespace AcraWebsite.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IBookingDataOverviewCache _bookingDataOverviewCache;
+        private readonly IBookingDataCacheService _bookingDataOverviewCache;
         private readonly IOpenSlotService _openSlotService;
         public HomeController(
             ILogger<HomeController> logger,
-            IBookingDataOverviewCache bookingDataOverviewCache,
+            IBookingDataCacheService bookingDataOverviewCache,
             IOpenSlotService openSlotService
             )
         {
@@ -33,7 +30,7 @@ namespace AcraWebsite.Controllers
             return View(model);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> GetSlot(string branchId, string regionId, string serviceId)
         {
             var slots = await _openSlotService.GetOpenSlots(serviceId, regionId, branchId);

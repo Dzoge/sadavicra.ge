@@ -1,8 +1,8 @@
 ﻿using AcraWebsite.Models;
 
-namespace AcraWebsite.Caching
+namespace AcraWebsite.Services
 {
-    public interface IBookingDataOverviewCache
+    public interface IBookingDataCacheService
     {
         BookingDataOverview GetAllData();
         void InitiateDataReload();
