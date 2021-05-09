@@ -66,7 +66,7 @@ $(document).on("click", ".getslot", function () {
         "branchId": branchId
     };
 
-    $.get("@Url.Action("GetSlot", "Home")", data, function (response) {
+    $.get(slotUrl, data, function (response) {
         $("#modal-content").html(response);
         $("#slot-modal").modal("show");
         // alert(response);
