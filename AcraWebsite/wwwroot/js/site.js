@@ -45,3 +45,31 @@ $('#selectRegion').on('change', function () {
 $('#selectVaccine').on('change', function () {
     filterVaccines(this.value);
 });
+
+
+function startLoading() {
+    $("body").append("<div class='lds-spinner'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>");
+}
+function stopLoading() {
+    $("body").find(".lds-spinner").remove();
+}
+
+
+$(document).on("click", ".getslot", function () {
+    startLoading();
+    var regionId = $(this).data("region-id");
+    var serviceId = $(this).data("service-id");
+    var branchId = $(this).data("branch-id");
+    var data = {
+        "regionId": regionId,
+        "serviceId": serviceId,
+        "branchId": branchId
+    };
+
+    $.get(slotUrl, data, function (response) {
+        $("#modal-content").html(response);
+        $("#slot-modal").modal("show");
+        // alert(response);
+        stopLoading();
+    });
+})

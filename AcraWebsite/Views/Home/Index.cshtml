@@ -77,6 +77,7 @@
                                                     </span>
                                                     @(location.BranchName) (@(location.BranchAddress))
                                                 </span>
+                                                <button type="button" data-service-id="@vaccine.ServiceId" data-region-id="@municipality.RegionId" data-branch-id="@location.BranchId" class="btn btn-primary btn-sm float-right getslot">ადგილები</button>
                                             </li>
                                         }
                                     }
@@ -89,9 +90,27 @@
         }
     }
 </div>
+
+<div class="modal" id="slot-modal" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">თავისუფალი ადგილების სია</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modal-content">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">დახურვა</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
-<script>
+    <script>
     filterVaccines("@(Model.FilterVaccineId)");
     filterRegions("@(Model.FilterRegionId)");
-</script>
+        var slotUrl = "@Url.Action("GetSlot", "Home")";
+    </script>
 }

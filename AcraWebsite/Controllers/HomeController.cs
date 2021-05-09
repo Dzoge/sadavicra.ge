@@ -7,6 +7,8 @@ using AcraWebsite.Caching;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AcraWebsite.Models;
+using MohBooking.Client;
+using AcraWebsite.Service;
 
 namespace AcraWebsite.Controllers
 {
@@ -14,13 +16,15 @@ namespace AcraWebsite.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IBookingDataOverviewCache _bookingDataOverviewCache;
-
+        private readonly IOpenSlotService _openSlotService;
         public HomeController(
             ILogger<HomeController> logger,
-            IBookingDataOverviewCache bookingDataOverviewCache
+            IBookingDataOverviewCache bookingDataOverviewCache,
+            IOpenSlotService openSlotService
             )
         {
             _logger = logger;
+            _openSlotService = openSlotService;
             _bookingDataOverviewCache = bookingDataOverviewCache;
         }
 
@@ -31,5 +35,12 @@ namespace AcraWebsite.Controllers
             model.Overview = _bookingDataOverviewCache.GetAllData();
             return View(model);
         }
+
+        public async Task<IActionResult> GetSlot(string branchId, string regionId, string serviceId)
+        {
+            var slots = await _openSlotService.GetOpenSlots(serviceId, regionId, branchId);
+            return PartialView("~/Views/Shared/Partials/_OpenSlotPartial.cshtml", slots);
+        }
+
     }
 }

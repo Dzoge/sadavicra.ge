@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AcraWebsite.Caching;
 using AcraWebsite.Jobs;
+using AcraWebsite.Service;
 using Hangfire;
 using Hangfire.MemoryStorage;
 using Microsoft.AspNetCore.Builder;
@@ -33,6 +34,7 @@ namespace AcraWebsite
             services.AddMohBookingClientServices();
 
             services.AddSingleton<IBookingDataOverviewCache, BookingDataOverviewCache>();
+            services.AddTransient<IOpenSlotService, OpenSlotService>();
 
             services.AddHangfire(x => x.UseMemoryStorage());
             services.AddHangfireServer();
