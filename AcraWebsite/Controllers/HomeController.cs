@@ -28,7 +28,7 @@ namespace AcraWebsite.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult GetSlot(string branchId, string regionId, string serviceId)
+        public IActionResult GetSlots(string branchId, string regionId, string serviceId)
         {
             var data = _bookingDataOverviewCache.GetAllData();
             var slots = data.GetSlotData(serviceId, regionId, branchId);

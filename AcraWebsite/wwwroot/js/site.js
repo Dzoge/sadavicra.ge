@@ -47,29 +47,32 @@ $('#selectVaccine').on('change', function () {
 });
 
 
-function startLoading() {
-    $("body").append("<div class='lds-spinner'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>");
-}
-function stopLoading() {
-    $("body").find(".lds-spinner").remove();
-}
+$(document).on("click", ".js-slots-toggle", function () {
+    var $toggle = $(this);
+    var $locationWrap = $toggle.parents('.js-location-wrap');
+    var $slotsContainer = $locationWrap.find('.js-location-slots');
 
+    if ($locationWrap.hasClass('open')) {
+        $slotsContainer.slideUp(400, function () {
+            $slotsContainer.html('');
+            $locationWrap.removeClass('open');
+        });
+    } else {
+        $locationWrap.addClass('loading');
 
-$(document).on("click", ".getslot", function () {
-    startLoading();
-    var regionId = $(this).data("region-id");
-    var serviceId = $(this).data("service-id");
-    var branchId = $(this).data("branch-id");
-    var data = {
-        "regionId": regionId,
-        "serviceId": serviceId,
-        "branchId": branchId
-    };
-
-    $.get(slotUrl, data, function (response) {
-        $("#modal-content").html(response);
-        $("#slot-modal").modal("show");
-        // alert(response);
-        stopLoading();
-    });
+        var request = {
+            "regionId": $toggle.data("region-id"),
+            "serviceId": $toggle.data("service-id"),
+            "branchId": $toggle.data("branch-id")
+        };
+        $.get("/home/getslots", request)
+            .done(function (response) {
+                $slotsContainer.html(response);
+                $slotsContainer.slideDown();
+                $locationWrap.addClass('open');
+            })
+            .always(function () {
+                $locationWrap.removeClass('loading');
+            });
+    }
 })

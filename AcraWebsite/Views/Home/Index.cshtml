@@ -70,16 +70,22 @@
                                     {
                                         foreach (var location in municipality.Locations)
                                         {
-                                            <li class="list-group-item">
-                                                <span class="card-text">
-                                                    <span class="badge badge-secondary btn-secondary">
-                                                        @(location.AvailableCount)
+                                            <li class="list-group-item location-wrap js-location-wrap">
+                                                <div class="location-head">
+                                                    <span class="card-text">
+                                                        <span class="badge badge-secondary btn-secondary">
+                                                            @(location.AvailableCount)
+                                                        </span>
+                                                        @(location.BranchName) (@(location.BranchAddress))
                                                     </span>
-                                                    @(location.BranchName) (@(location.BranchAddress))
-                                                </span>
-                                                <button type="button" data-service-id="@vaccine.ServiceId" data-region-id="@municipality.RegionId" data-branch-id="@location.BranchId" class="btn btn-secondary btn-sm float-right getslot">
-                                                    ადგილები <i class="bi bi-chevron-down"></i>
-                                                </button>
+                                                    <button type="button" data-service-id="@vaccine.ServiceId" data-region-id="@municipality.RegionId" data-branch-id="@location.BranchId" class="btn btn-secondary btn-sm float-right location-loaddetails js-slots-toggle">
+                                                        ადგილები
+                                                        <i class="bi bi-chevron-down details-closed"></i>
+                                                        <i class="bi bi-x details-open"></i>
+                                                        <i class="bi bi-hourglass-split details-loading"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="location-slots js-location-slots"></div>
                                             </li>
                                         }
                                     }
@@ -117,6 +123,5 @@
     <script>
     filterVaccines("@(Model.FilterVaccineId)");
     filterRegions("@(Model.FilterRegionId)");
-    var slotUrl = "@Url.Action("GetSlot", "Home")";
     </script>
 }
