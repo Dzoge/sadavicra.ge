@@ -51,10 +51,11 @@ $(document).on("click", ".js-slots-toggle", function () {
     var $toggle = $(this);
     var $locationWrap = $toggle.parents('.js-location-wrap');
     var $slotsContainer = $locationWrap.find('.js-location-slots');
+    var $slotsContainerContent = $locationWrap.find('.js-location-slots-content');
 
     if ($locationWrap.hasClass('open')) {
         $slotsContainer.slideUp(400, function () {
-            $slotsContainer.html('');
+            $slotsContainerContent.html('');
             $locationWrap.removeClass('open');
         });
     } else {
@@ -67,7 +68,7 @@ $(document).on("click", ".js-slots-toggle", function () {
         };
         $.get("/home/getslots", request)
             .done(function (response) {
-                $slotsContainer.html(response);
+                $slotsContainerContent.html(response);
                 $slotsContainer.slideDown();
                 $locationWrap.addClass('open');
             })

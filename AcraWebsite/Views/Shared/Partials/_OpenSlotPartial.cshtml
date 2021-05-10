@@ -2,40 +2,31 @@
 
 @foreach (var item in Model)
 {
-    <div class="row">
-        <div class="col-12">
-            <h4>@item.Name</h4>
-        </div>
+    <div class="location-slots__title-wrap">
+        <h4>@item.Name</h4>
     </div>
-    <table class="table table-striped table-bordered border-primary">
-        <thead>
-            <tr>
-                <th scope="col">
-                    <div style="width:85px">
-                        თარიღი
-                    </div>
-                </th>
-                <th scope="col">კვირის დღე</th>
-                <th scope="col">თავისუფალი დროები</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var date in item.Dates)
-            {
-                <tr class="@(date.WeekName == "შაბათი" || date.WeekName=="კვირა" ? "table-danger" : "")">
-                    <th>@date.Dt?.ToString("dd-MM-yyyy")</th>
-                    <th scope="row">@date.WeekName</th>
-                    <td>
-                        <div class="row row-cols-auto px-3">
-                            @foreach (var slot in date.Slots)
-                            {
-                                <div class="col slot-times mb-2">@slot.Value</div>
-                            }
-                        </div>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered border-muted">
+            <tbody>
+                @foreach (var date in item.Dates)
+                {
+                    <tr>
+                        <th>
+                            @date.WeekName
+                            <br />
+                            @date.Dt?.ToString("dd-MM-yyyy")
+                        </th>
+                        <td>
+                            <div class="location-slots__slots">
+                                @foreach (var slot in date.Slots)
+                                {
+                                    <a class="location-slots__slot-single">@slot.Value</a>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 }
- 

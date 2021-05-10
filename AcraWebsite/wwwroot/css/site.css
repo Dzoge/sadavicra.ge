@@ -30,6 +30,10 @@ html {
     }
 }
 
+.btn:focus {
+    box-shadow: none !important;
+}
+
 .border-top {
     border-top: 1px solid #e5e5e5;
 }
@@ -132,11 +136,6 @@ body {
     opacity: 0.5;
 }
 
-.btn:active, .btn:focus, .btn:focus-visible {
-    border-color: transparent !important;
-    box-shadow: none !important;
-}
-
 .location-wrap .details-closed {
     display: inline-block;
 }
@@ -169,8 +168,104 @@ body {
     display: block;
 }
 
-@media (max-width: 767px) {
-    .filters-wrap {
+.location-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.location-head .card-text {
+    width: calc(100% - 120px);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 15px;
+    line-height: 19px;
+}
+
+    .location-head .card-text .badge {
+        position: relative;
+        top: -1px;
+    }
+
+    .location-head .card-text span:not(.badge) {
+        width: calc(100% - 70px);
+        margin-left: 10px;
+    }
+
+    .location-slots__content {
+        margin-top: 20px;
+    }
+
+.location-slots__title-wrap {
+    padding: 12px;
+    background-color: rgba(0,0,0,.03);
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+    .location-slots__content h4 {
+        font-size: 15px;
+        line-height: 1;
+        margin: 0;
+        font-weight: 600;
+    }
+
+.location-slots__content .table {
+    font-size: 13px;
+    border-color: #e8e8e8;
+}
+
+    .location-slots__content .table td, .location-slots__content .table th {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .location-slots__content .table td:first-child, .location-slots__content .table th:first-child {
+        width: 100px;
+    }
+
+.location-slots__slots {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    gap: 10px;
+}
+
+.location-loaddetails {
+    transition: all .3s ease;
+}
+
+.list-group-item.open .location-loaddetails {
+    background-color: #212529;
+    border-color: #212529;
+}
+
+.location-slots__slot-single {
+    padding: 5px 10px;
+    text-align: center;
+    background-color: white;
+    border-radius: 4px;
+    font-size: 13px;
+    border: 1px solid #dee2e6;
+    transition: background-color .3s ease;
+    color: #212529;
+    text-decoration: none;
+}
+
+    .location-slots__slot-single:hover {
+        /*background-color: rgba(0, 128, 0, .2);*/
+        color: #212529;
+    }
+
+    .location-slots__slot-single:link, .location-slots__slot-single:visited {
+        color: #212529;
+        text-decoration: none;
+    }
+
+    @media (max-width: 767px) {
+        .filters-wrap {
         flex-wrap: wrap;
     }
 
