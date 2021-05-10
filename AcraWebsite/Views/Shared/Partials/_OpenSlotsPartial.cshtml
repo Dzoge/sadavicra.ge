@@ -11,11 +11,11 @@
                 @foreach (var date in item.Dates)
                 {
                     <tr>
-                        <th>
-                            @date.WeekName
+                        <td>
+                            @date.WeekName&nbsp;
                             <br />
                             @date.Dt?.ToString("dd-MM-yyyy")
-                        </th>
+                        </td>
                         <td>
                             <div class="location-slots__slots">
                                 @foreach (var slot in date.Slots)
