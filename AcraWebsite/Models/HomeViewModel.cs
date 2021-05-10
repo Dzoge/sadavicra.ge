@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace AcraWebsite.Models
 {
@@ -14,9 +15,13 @@ namespace AcraWebsite.Models
 
             if (IsFilterParameterValueValid(regionFilter))
                 FilterRegionId = regionFilter;
+
+            LastUpdateDtSettings = new LastUpdateDtSettings();
         }
 
         public BookingDataOverview Overview { get; set; }
+        public CultureInfo CultureInfo { get; set; }
+        public LastUpdateDtSettings LastUpdateDtSettings { get; set; }
 
         private bool IsFilterParameterValueValid(string value)
         {
@@ -29,5 +34,29 @@ namespace AcraWebsite.Models
 
             return true;
         }
+
+        internal void GenerateLastUpdateStatus(DateTimeOffset? lastUpdateDt)
+        {
+            if (!lastUpdateDt.HasValue) return;
+            var diff = (DateTimeOffset.Now - lastUpdateDt.Value).TotalMinutes;
+            if (diff >= 10)
+            {
+                LastUpdateDtSettings.FontSize = "14";
+                LastUpdateDtSettings.ClassName = "danger";
+                LastUpdateDtSettings.Emoji = "🙈 ";
+            }
+            else if (diff >= 5)
+            {
+                LastUpdateDtSettings.FontSize = "14";
+                LastUpdateDtSettings.ClassName = "warning";
+                LastUpdateDtSettings.Emoji = "😬 ";
+            }
+        }
+    }
+    public class LastUpdateDtSettings
+    {
+        public string FontSize { get; set; } = "12";
+        public string ClassName { get; set; } = "secondary";
+        public string Emoji { get; set; }
     }
 }

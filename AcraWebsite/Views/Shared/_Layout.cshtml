@@ -48,10 +48,14 @@
     <div class="container">
         <div class="text-center">
             <h1 class="display-4">სად ავიცრა?</h1>
-            <p>გაიგე სად არის დარჩენილი თავისუფალი დოზა COVID19 აცრის გასაკეთებლად<br/> და შემდეგ გადადი <a href="https://booking.moh.gov.ge/Hmis/Hmis.Queue.Web/#/register" target="_blank">booking.moh.gov.ge</a>-ზე რომ მოასწრო დაჯავშნა
+            <p>
+                გაიგე სად არის დარჩენილი თავისუფალი დოზა COVID19 აცრის გასაკეთებლად<br /> და შემდეგ გადადი <a href="https://booking.moh.gov.ge/Hmis/Hmis.Queue.Web/#/register" target="_blank">booking.moh.gov.ge</a>-ზე რომ მოასწრო დაჯავშნა
                 @if (Model.Overview != null)
                 {
-                    <span class="badge badge-pill badge-secondary btn-secondary" style="font-size: 12px; font-weight: normal">ბოლო განახლება @(Model.Overview.LastUpdateDt.ToString("dd MMMM, HH:mm"))</span>
+                    <span class="badge badge-pill badge-secondary @($"btn-{Model.LastUpdateDtSettings.ClassName}")"
+                          style="font-size: @($"{Model.LastUpdateDtSettings.FontSize}px"); font-weight: normal">
+                        @($"{Model.LastUpdateDtSettings.Emoji}ბოლო განახლება {Model.Overview.LastUpdateDt.ToString("dd MMMM, HH:mm", Model.CultureInfo.DateTimeFormat)}")
+                    </span>
                 }
             </p>
             <hr />
