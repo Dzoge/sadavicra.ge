@@ -36,7 +36,7 @@ namespace AcraWebsite.Controllers
         {
             var data = _bookingDataOverviewCache.GetAllData();
             var slots = data.GetSlotData(serviceId, regionId, branchId);
-            return PartialView("~/Views/Shared/Partials/_OpenSlotPartial.cshtml", slots);
+            return PartialView("~/Views/Shared/Partials/_OpenSlotsPartial.cshtml", slots);
         }
 
     }
