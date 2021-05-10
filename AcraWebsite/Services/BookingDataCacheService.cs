@@ -91,9 +91,14 @@ namespace AcraWebsite.Services
             {
                 var vaccineModel = new Vaccine()
                 {
-                    Id = vaccine.Key,
+                    Id = vaccine.Key
+                        .Trim(),
                     ServiceId = vaccine.Id,
-                    Name = vaccine.Name,
+                    Name = vaccine.Name
+                        .Replace("კოვიდ 19 ვაქცინაცია", String.Empty)
+                        .Replace("(", String.Empty)
+                        .Replace(")", String.Empty)
+                        .Trim(),
                     Description = GenerateVaccineDescription(vaccine.Id),
                     Municipalities = new List<Municipality>()
                 };
