@@ -2,6 +2,8 @@
 using AcraWebsite.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Globalization;
 
 namespace AcraWebsite.Controllers
 {
@@ -24,6 +26,8 @@ namespace AcraWebsite.Controllers
         {
             var model = new HomeViewModel(vaccine, region);
             model.Overview = _bookingDataOverviewCache.GetAllData();
+            model.CultureInfo = new CultureInfo("ka-ge");
+            model.GenerateLastUpdateStatus(model.Overview?.LastUpdateDt);
             return View(model);
         }
     }
