@@ -12,6 +12,13 @@ namespace AcraWebsite.Models
         public List<Municipality> Municipalities { get; set; }
         public DateTimeOffset LastUpdateDt { get; set; }
 
+        // SlotsData public property is needed for fallback data serialization/deserialization
+        public Dictionary<string, IEnumerable<OpenSlotModel>> SlotsData
+        {
+            get => _slotsData;
+            set => _slotsData = value;
+        }
+
         public BookingDataCache()
         {
             _slotsData = new Dictionary<string, IEnumerable<OpenSlotModel>>();
