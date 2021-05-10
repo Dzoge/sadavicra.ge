@@ -45,3 +45,35 @@ $('#selectRegion').on('change', function () {
 $('#selectVaccine').on('change', function () {
     filterVaccines(this.value);
 });
+
+
+$(document).on("click", ".js-slots-toggle", function () {
+    var $toggle = $(this);
+    var $locationWrap = $toggle.parents('.js-location-wrap');
+    var $slotsContainer = $locationWrap.find('.js-location-slots');
+    var $slotsContainerContent = $locationWrap.find('.js-location-slots-content');
+
+    if ($locationWrap.hasClass('open')) {
+        $slotsContainer.slideUp(400, function () {
+            $slotsContainerContent.html('');
+            $locationWrap.removeClass('open');
+        });
+    } else {
+        $locationWrap.addClass('loading');
+
+        var request = {
+            "regionId": $toggle.data("region-id"),
+            "serviceId": $toggle.data("service-id"),
+            "branchId": $toggle.data("branch-id")
+        };
+        $.get("/home/getslots", request)
+            .done(function (response) {
+                $slotsContainerContent.html(response);
+                $slotsContainer.slideDown();
+                $locationWrap.addClass('open');
+            })
+            .always(function () {
+                $locationWrap.removeClass('loading');
+            });
+    }
+})

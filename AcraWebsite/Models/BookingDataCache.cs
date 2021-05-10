@@ -4,15 +4,44 @@ using System.Linq;
 
 namespace AcraWebsite.Models
 {
-    public class BookingDataOverview
+    public class BookingDataCache
     {
+        private Dictionary<string, IEnumerable<OpenSlotModel>> _slotsData;
+
         public List<Vaccine> Vaccines { get; set; }
         public List<Municipality> Municipalities { get; set; }
         public DateTimeOffset LastUpdateDt { get; set; }
+
+        public BookingDataCache()
+        {
+            _slotsData = new Dictionary<string, IEnumerable<OpenSlotModel>>();
+        }
+
+        public void AddSlotData(string vaccineId, string regionId, string branchId, IEnumerable<OpenSlotModel> data)
+        {
+            var key = GetSlotDataKey(vaccineId, regionId, branchId);
+            if (_slotsData.ContainsKey(key))
+                _slotsData.Remove(key);
+            _slotsData.Add(key, data);
+        }
+
+        public IEnumerable<OpenSlotModel> GetSlotData(string vaccineId, string regionId, string branchId)
+        {
+            var key = GetSlotDataKey(vaccineId, regionId, branchId);
+            return _slotsData.ContainsKey(key)
+                ? _slotsData[key]
+                : new List<OpenSlotModel>();
+        }
+
+        private string GetSlotDataKey(string vaccineId, string regionId, string branchId)
+        {
+            return $"{vaccineId}-{regionId}-{branchId}";
+        }
     }
 
     public class Vaccine
     {
+        public string ServiceId { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
