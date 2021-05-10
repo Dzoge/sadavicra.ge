@@ -1,16 +1,16 @@
-﻿using AcraWebsite.Caching;
+﻿using AcraWebsite.Services;
 using Microsoft.Extensions.Logging;
 
 namespace AcraWebsite.Jobs
 {
     public class RefreshDataJob
     {
-        private readonly IBookingDataOverviewCache _bookingDataOverviewCache;
         private readonly ILogger<RefreshDataJob> _logger;
+        private readonly IBookingDataCacheService _bookingDataOverviewCache;
 
         public RefreshDataJob(
-            IBookingDataOverviewCache bookingDataOverviewCache,
-            ILogger<RefreshDataJob> logger
+            ILogger<RefreshDataJob> logger,
+            IBookingDataCacheService bookingDataOverviewCache
             )
         {
             _bookingDataOverviewCache = bookingDataOverviewCache;

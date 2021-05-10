@@ -11,7 +11,6 @@ namespace MohBooking.Client
 
         Task<IEnumerable<MunicipalityBranch>> GetMunicipalityBranchesAsync(string serviceId,
             string municipalityId);
-
         Task<IEnumerable<SlotResponse>> GetSlotsAsync(string serviceId, string regionId, string branchId);
     }
 }

@@ -19,9 +19,9 @@ namespace AcraWebsite.Models
             LastUpdateDtSettings = new LastUpdateDtSettings();
         }
 
-        public BookingDataOverview Overview { get; set; }
         public CultureInfo CultureInfo { get; set; }
         public LastUpdateDtSettings LastUpdateDtSettings { get; set; }
+        public BookingDataCache Cache { get; set; }
 
         private bool IsFilterParameterValueValid(string value)
         {

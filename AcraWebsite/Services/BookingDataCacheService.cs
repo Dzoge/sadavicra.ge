@@ -9,22 +9,22 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace AcraWebsite.Caching
+namespace AcraWebsite.Services
 {
-    public class BookingDataOverviewCache : IBookingDataOverviewCache
+    public class BookingDataCacheService : IBookingDataCacheService
     {
         public const int _defaultSleepIntervalMs = 100;
 
         private readonly IMohBookingClient _mohBookingClient;
-        private readonly ILogger<BookingDataOverviewCache> _logger;
+        private readonly ILogger<BookingDataCacheService> _logger;
         private readonly object _dataLocker;
 
-        private BookingDataOverview _cachedData;
+        private BookingDataCache _cachedData;
         private Thread _loadingThread;
 
-        public BookingDataOverviewCache(
+        public BookingDataCacheService(
             IMohBookingClient mohBookingClient,
-            ILogger<BookingDataOverviewCache> logger
+            ILogger<BookingDataCacheService> logger
         )
         {
             _mohBookingClient = mohBookingClient;
@@ -33,7 +33,7 @@ namespace AcraWebsite.Caching
             InitiateDataReload();
         }
 
-        public BookingDataOverview GetAllData()
+        public BookingDataCache GetAllData()
         {
             lock (_dataLocker)
                 return _cachedData;
@@ -53,7 +53,7 @@ namespace AcraWebsite.Caching
 
         private async Task LoadingThreadWorker()
         {
-            BookingDataOverview data;
+            BookingDataCache data;
             try
             {
                 data = await LoadData();
@@ -75,13 +75,13 @@ namespace AcraWebsite.Caching
             }
         }
 
-        private async Task<BookingDataOverview> LoadData()
+        private async Task<BookingDataCache> LoadData()
         {
             int sleepInteval = _cachedData == null
                 ? 0
                 : _defaultSleepIntervalMs;
 
-            var model = new BookingDataOverview();
+            var model = new BookingDataCache();
             model.Vaccines = new List<Vaccine>();
 
             var vaccines = await _mohBookingClient.GetServicesAsync();
@@ -92,6 +92,7 @@ namespace AcraWebsite.Caching
                 var vaccineModel = new Vaccine()
                 {
                     Id = vaccine.Key,
+                    ServiceId = vaccine.Id,
                     Name = vaccine.Name,
                     Description = GenerateVaccineDescription(vaccine.Id),
                     Municipalities = new List<Municipality>()
@@ -133,6 +134,8 @@ namespace AcraWebsite.Caching
 
                             if (!availableSlots.Any())
                                 continue;
+
+                            model.AddSlotData(vaccine.Id, region.Id, branch.Id, MapSlotResponse(slots));
 
                             var modelLocation = new VaccineLocation()
                             {
@@ -179,11 +182,42 @@ namespace AcraWebsite.Caching
             return null;
         }
 
-        private BookingDataOverview GetFallbackData()
+        private BookingDataCache GetFallbackData()
         {
             var fileContent = File.ReadAllText("wwwroot/data/data-fallback.json");
-            var fallbackData = JsonConvert.DeserializeObject<BookingDataOverview>(fileContent);
+            var fallbackData = JsonConvert.DeserializeObject<BookingDataCache>(fileContent);
             return fallbackData;
+        }
+
+        private IEnumerable<OpenSlotModel> MapSlotResponse(IEnumerable<SlotResponse> slots)
+        {
+            try
+            {
+                return slots.Select(x =>
+                     new OpenSlotModel()
+                     {
+                         Name = x.Name,
+                         Dates = x.Schedules.FirstOrDefault().Dates
+                         .Where(x => x.Slots.Any(s => s.Taken != true && s.Reserved != true))
+                         .Select(y => new Models.ScheduleDate()
+                         {
+                             DateName = y.DateName,
+                             Dt = y.Dt,
+                             WeekName = y.WeekName,
+                             Slots = y.Slots.Where(s => s.Taken != true && s.Reserved != true).Select(z => new Models.Slot()
+                             {
+                                 Value = z.Value
+
+                             })
+                         })
+                     }
+                 ).AsEnumerable();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to map SlotResponse to OpenSlotModel");
+                return new List<OpenSlotModel>();
+            }
         }
     }
 }

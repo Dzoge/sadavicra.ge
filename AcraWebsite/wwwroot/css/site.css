@@ -1,13 +1,9 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
+﻿a.navbar-brand {
     white-space: normal;
     text-align: center;
     word-break: break-all;
 }
 
-/* Provide sufficient contrast against white background */
 a {
     color: #0366d6;
 }
@@ -24,8 +20,6 @@ a {
     border-color: #1861ac;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
 html {
     font-size: 14px;
 }
@@ -34,6 +28,10 @@ html {
     html {
         font-size: 16px;
     }
+}
+
+.btn:focus {
+    box-shadow: none !important;
 }
 
 .border-top {
@@ -53,15 +51,12 @@ button.accept-policy {
     line-height: inherit;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
 html {
     position: relative;
     min-height: 100%;
 }
 
 body {
-    /* Margin bottom by footer height */
     margin-bottom: 60px;
 }
 
@@ -70,7 +65,7 @@ body {
     bottom: 0;
     width: 100%;
     white-space: nowrap;
-    line-height: 60px; /* Vertically center the text there */
+    line-height: 60px;
 }
 
     .footer .contribute {
@@ -136,8 +131,141 @@ body {
     display: none !important;
 }
 
-@media (max-width: 767px) {
-    .filters-wrap {
+.location-wrap.loading .location-loaddetails {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.location-wrap .details-closed {
+    display: inline-block;
+}
+
+.location-wrap.open .details-closed, .location-wrap.loading .details-closed {
+    display: none;
+}
+
+.location-wrap .details-open, .location-wrap.loading .details-open {
+    display: none;
+}
+
+.location-wrap.open .details-open {
+    display: inline-block;
+}
+
+.location-wrap .details-loading, .location-wrap.open .details-loading {
+    display: none;
+}
+
+.location-wrap.loading .details-loading {
+    display: inline-block;
+}
+
+.location-wrap .location-slots {
+    display: none;
+}
+
+.location-wrap.open .location-slots {
+    display: block;
+}
+
+.location-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.location-head .card-text {
+    width: calc(100% - 120px);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 15px;
+    line-height: 19px;
+}
+
+    .location-head .card-text .badge {
+        position: relative;
+        top: -1px;
+    }
+
+    .location-head .card-text span:not(.badge) {
+        width: calc(100% - 70px);
+        margin-left: 10px;
+    }
+
+    .location-slots__content {
+        margin-top: 20px;
+    }
+
+.location-slots__title-wrap {
+    padding: 12px;
+    background-color: rgba(0,0,0,.03);
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+    .location-slots__content h4 {
+        font-size: 15px;
+        line-height: 1;
+        margin: 0;
+        font-weight: 600;
+    }
+
+.location-slots__content .table {
+    font-size: 13px;
+    border-color: #e8e8e8;
+}
+
+    .location-slots__content .table td, .location-slots__content .table th {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .location-slots__content .table td:first-child, .location-slots__content .table th:first-child {
+        width: 100px;
+    }
+
+.location-slots__slots {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    gap: 10px;
+}
+
+.location-loaddetails {
+    transition: all .3s ease;
+}
+
+.list-group-item.open .location-loaddetails {
+    background-color: #212529;
+    border-color: #212529;
+}
+
+.location-slots__slot-single {
+    padding: 5px 10px;
+    text-align: center;
+    background-color: white;
+    border-radius: 4px;
+    font-size: 13px;
+    border: 1px solid #dee2e6;
+    transition: background-color .3s ease;
+    color: #212529;
+    text-decoration: none;
+}
+
+    .location-slots__slot-single:hover {
+        /*background-color: rgba(0, 128, 0, .2);*/
+        color: #212529;
+    }
+
+    .location-slots__slot-single:link, .location-slots__slot-single:visited {
+        color: #212529;
+        text-decoration: none;
+    }
+
+    @media (max-width: 767px) {
+        .filters-wrap {
         flex-wrap: wrap;
     }
 
@@ -155,4 +283,22 @@ body {
             margin-left: 0;
             margin-top: 10px;
         }
+}
+
+.float-right {
+    float: right;
+}
+
+
+.slot-times {
+    width: 75px;
+    border-top-width: 1px;
+    border-left-width: 0;
+    position: relative;
+    display: block;
+    padding: .5rem 1rem;
+    color: #212529;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
 }

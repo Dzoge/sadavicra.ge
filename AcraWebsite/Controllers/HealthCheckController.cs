@@ -1,4 +1,4 @@
-﻿using AcraWebsite.Caching;
+﻿using AcraWebsite.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,9 +10,9 @@ namespace AcraWebsite
 {
     public class HealthCheckController : Controller
     {
-        private readonly IBookingDataOverviewCache _bookingDataOverviewCache;
+        private readonly IBookingDataCacheService _bookingDataOverviewCache;
 
-        public HealthCheckController(IBookingDataOverviewCache bookingDataOverviewCache)
+        public HealthCheckController(IBookingDataCacheService bookingDataOverviewCache)
         {
             _bookingDataOverviewCache = bookingDataOverviewCache;
         }
