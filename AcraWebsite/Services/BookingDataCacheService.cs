@@ -36,7 +36,9 @@ namespace AcraWebsite.Services
         public BookingDataCache GetAllData()
         {
             lock (_dataLocker)
+            {
                 return _cachedData;
+            }
         }
 
         public void InitiateDataReload()
@@ -57,29 +59,35 @@ namespace AcraWebsite.Services
             try
             {
                 data = await LoadData();
+                lock (_dataLocker)
+                {
+                    _cachedData = data;
+                }
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Failed to load data from MOH");
 
-                if (_cachedData != null)
-                    return;
-
-                data = GetFallbackData();
+                lock (_dataLocker)
+                {
+                    if (_cachedData == null)
+                        _cachedData = GetFallbackData();
+                }
             }
-
-            lock (_dataLocker)
+            finally
             {
-                _cachedData = data;
                 _loadingThread = null;
             }
         }
 
         private async Task<BookingDataCache> LoadData()
         {
-            int sleepInteval = _cachedData == null
-                ? 0
-                : _defaultSleepIntervalMs;
+            int sleepInteval = 0;
+            lock (_dataLocker)
+            {
+                if (_cachedData != null)
+                    sleepInteval = _defaultSleepIntervalMs;
+            }
 
             var model = new BookingDataCache();
             model.Vaccines = new List<Vaccine>();
