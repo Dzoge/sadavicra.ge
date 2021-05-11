@@ -4,7 +4,7 @@
 
     @if (Model.Cache == null)
     {
-        <p class="text-center">მონაცემები არ გვაქვს, ვცდილობთ განავაახლოთ...</p>
+        <p class="text-center">მონაცემები არ გვაქვს, ვცდილობთ განვაახლოთ...</p>
         <p class="text-center">რამდენიმე წამი დაგველოდე 😕</p>
         <script>
             setTimeout(function () { window.location.reload(true); }, 5000)
@@ -79,13 +79,13 @@
                                                         <span>
                                                             @(location.BranchName) (@(location.BranchAddress))
                                                         </span>
+                                                        <button type="button" data-service-id="@vaccine.ServiceId" data-region-id="@municipality.RegionId" data-branch-id="@location.BranchId" class="btn btn-secondary btn-sm location-loaddetails js-slots-toggle">
+                                                            ადგილები
+                                                            <i class="bi bi-chevron-down details-closed"></i>
+                                                            <i class="bi bi-x details-open"></i>
+                                                            <i class="bi bi-hourglass-split details-loading"></i>
+                                                        </button>
                                                     </span>
-                                                    <button type="button" data-service-id="@vaccine.ServiceId" data-region-id="@municipality.RegionId" data-branch-id="@location.BranchId" class="btn btn-secondary btn-sm location-loaddetails js-slots-toggle">
-                                                        ადგილები
-                                                        <i class="bi bi-chevron-down details-closed"></i>
-                                                        <i class="bi bi-x details-open"></i>
-                                                        <i class="bi bi-hourglass-split details-loading"></i>
-                                                    </button>
                                                 </div>
                                                 <div class="location-slots js-location-slots">
                                                     <div class="location-slots__content js-location-slots-content"></div>
