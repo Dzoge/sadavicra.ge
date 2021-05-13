@@ -38,14 +38,15 @@ namespace AcraWebsite.Models
         internal void GenerateLastUpdateStatus(DateTimeOffset? lastUpdateDt)
         {
             if (!lastUpdateDt.HasValue) return;
-            var diff = (DateTimeOffset.Now - lastUpdateDt.Value).TotalMinutes;
-            if (diff >= 10)
+            LastUpdateDtSettings.LastUpdateDtDiffInMinutes = (int)((DateTimeOffset.Now - lastUpdateDt.Value).TotalMinutes);
+
+            if (LastUpdateDtSettings.LastUpdateDtDiffInMinutes >= 10)
             {
                 LastUpdateDtSettings.FontSize = "14";
                 LastUpdateDtSettings.ClassName = "danger";
-                LastUpdateDtSettings.Emoji = "🙈 ";
+                LastUpdateDtSettings.Emoji = "😒 ";
             }
-            else if (diff >= 5)
+            else if (LastUpdateDtSettings.LastUpdateDtDiffInMinutes >= 5)
             {
                 LastUpdateDtSettings.FontSize = "14";
                 LastUpdateDtSettings.ClassName = "warning";
@@ -58,5 +59,16 @@ namespace AcraWebsite.Models
         public string FontSize { get; set; } = "12";
         public string ClassName { get; set; } = "secondary";
         public string Emoji { get; set; }
+
+        public int LastUpdateDtDiffInMinutes { get; set; }
+      
+        public string LastUpdateDtDisplayText
+        {
+            get
+            {
+                var differenceInHours = Math.Round(TimeSpan.FromMinutes(LastUpdateDtDiffInMinutes).TotalHours, 0);
+                return LastUpdateDtDiffInMinutes >= 60 ? $"{differenceInHours} საათის" : $"{LastUpdateDtDiffInMinutes} წუთის";
+            }
+        }
     }
 }
