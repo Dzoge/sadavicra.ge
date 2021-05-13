@@ -1,4 +1,8 @@
-﻿a.navbar-brand {
+﻿.disabled {
+    opacity: .5;
+}
+
+a.navbar-brand {
     white-space: normal;
     text-align: center;
     word-break: break-all;
