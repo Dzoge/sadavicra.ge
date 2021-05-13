@@ -59,9 +59,12 @@ namespace AcraWebsite.Models
         public string FontSize { get; set; } = "12";
         public string ClassName { get; set; } = "secondary";
         public string Emoji { get; set; }
-
         public int LastUpdateDtDiffInMinutes { get; set; }
-      
+
+        public bool LastUpdateIsTooOld => LastUpdateDtDiffInMinutes >= 10;
+        public bool LastUpdateIsBearable => LastUpdateDtDiffInMinutes >= 5;
+
+
         public string LastUpdateDtDisplayText
         {
             get
