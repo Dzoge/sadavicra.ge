@@ -56,12 +56,12 @@
                     </span>
                 }
             </p>
-            @if (Model.LastUpdateDtSettings.LastUpdateDtDiffInMinutes >= 5)
+            @if (Model.LastUpdateDtSettings.LastUpdateIsBearable)
             {
                 <div class="alert @($"alert-{Model.LastUpdateDtSettings.ClassName}")" role="alert">
-                    @($"სერვისთან დაკავშირება ვერ ხერხდება. მიმდინარე მონაცემები განახლებულია {Model.LastUpdateDtSettings.LastUpdateDtDisplayText} წინ")
+                    სერვისთან დაკავშირება ვერ ხერხდება. მიმდინარე მონაცემები განახლებულია <strong>@(Model.LastUpdateDtSettings.LastUpdateDtDisplayText) წინ</strong>
                 </div>
-            }   
+            }
             <hr />
         </div>
         @RenderBody()

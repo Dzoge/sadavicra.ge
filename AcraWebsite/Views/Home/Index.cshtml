@@ -1,14 +1,18 @@
 ﻿@model HomeViewModel
 
-<div class="mb-5">
+<div class="mb-5 @(Model.LastUpdateDtSettings.LastUpdateIsTooOld ? "disabled" : String.Empty)">
+    @if (Model.Cache == null || Model.LastUpdateDtSettings.LastUpdateIsTooOld)
+    {
+        <script>
+            setTimeout(function () { window.location.reload(true); }, 5000)
+        </script>
+    }
+
 
     @if (Model.Cache == null)
     {
         <p class="text-center">მონაცემები არ გვაქვს, ვცდილობთ განვაახლოთ...</p>
         <p class="text-center">რამდენიმე წამი დაგველოდე 😕</p>
-        <script>
-            setTimeout(function () { window.location.reload(true); }, 5000)
-        </script>
     }
     else
     {
