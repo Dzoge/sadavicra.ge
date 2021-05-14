@@ -10,11 +10,16 @@
             <tbody>
                 @foreach (var date in item.Dates)
                 {
-                    <tr>
+                    if (!date.Dt.HasValue)
+                    {
+                        continue;
+                    }
+
+                    <tr data-date="@(date.Dt.Value.ToString("yyyy'-'MM'-'dd"))">
                         <td>
                             @date.WeekName&nbsp;
                             <br />
-                            @date.Dt?.ToString("dd-MM-yyyy")
+                            @date.Dt.Value.ToString("dd-MM-yyyy")
                         </td>
                         <td>
                             <div class="location-slots__slots">

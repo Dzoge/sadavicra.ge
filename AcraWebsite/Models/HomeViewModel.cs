@@ -7,14 +7,18 @@ namespace AcraWebsite.Models
     {
         public string FilterVaccineId { get; }
         public string FilterRegionId { get; }
+        public string FilterDate { get; set; }
 
-        public HomeViewModel(string vaccineFilter, string regionFilter)
+        public HomeViewModel(string vaccineFilter, string regionFilter, string date)
         {
             if (IsFilterParameterValueValid(vaccineFilter))
                 FilterVaccineId = vaccineFilter;
 
             if (IsFilterParameterValueValid(regionFilter))
                 FilterRegionId = regionFilter;
+
+            if (IsFilterParameterValueValid(date))
+                FilterDate = date;
 
             LastUpdateDtSettings = new LastUpdateDtSettings();
         }
