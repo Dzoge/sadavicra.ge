@@ -126,7 +126,8 @@ namespace AcraWebsite.Services
                             RegionName = region.GeoName,
                             Id = municipality.Id,
                             Name = municipality.GeoName,
-                            Locations = new List<VaccineLocation>()
+                            Locations = new List<VaccineLocation>(),
+                            AvailableDates = new List<DateTime>()
                         };
 
                         var branches = await _mohBookingClient.GetMunicipalityBranchesAsync(vaccine.Id, municipality.Id);
@@ -144,24 +145,38 @@ namespace AcraWebsite.Services
                                 .Where(s => s.Taken != true && s.Reserved != true)
                                 .ToList();
 
-
                             if (!availableSlots.Any())
                                 continue;
 
-                            model.AddSlotData(vaccine.Id, region.Id, branch.Id, MapSlotResponse(slots));
+                            var openSlots = MapSlotResponse(slots);
+                            var distinctSlotDates = openSlots
+                                .SelectMany(s => s.Dates)
+                                .Where(d => d.Dt.HasValue)
+                                .Select(d => d.Dt.Value.Date)
+                                .Distinct()
+                                .ToList();
 
+                            model.AddSlotData(vaccine.Key, municipality.Id, branch.Id, openSlots);
                             var modelLocation = new VaccineLocation()
                             {
                                 BranchId = branch.Id,
                                 BranchName = branch.Name,
                                 BranchAddress = branch.Address,
-                                AvailableCount = availableSlots.Count()
+                                AvailableDates = distinctSlotDates
                             };
                             municipalityModel.Locations.Add(modelLocation);
+
+                            municipalityModel.AvailableDates.AddRange(distinctSlotDates);
                         }
 
-                        if (municipalityModel.AvailableCount > 0)
+                        var slotsForMuniciplity = model.GetSlotData(vaccine.Key, municipality.Id);
+                        if (slotsForMuniciplity.Count() > 0)
+                        {
                             vaccineModel.Municipalities.Add(municipalityModel);
+                            municipalityModel.AvailableDates = municipalityModel.AvailableDates
+                                .Distinct()
+                                .ToList();
+                        }
                     }
                 }
             }
@@ -208,35 +223,30 @@ namespace AcraWebsite.Services
             return fallbackData;
         }
 
-        private IEnumerable<OpenSlotModel> MapSlotResponse(IEnumerable<SlotResponse> slots)
+        private List<OpenSlotModel> MapSlotResponse(IEnumerable<SlotResponse> slots)
         {
-            try
-            {
-                return slots.Select(x =>
-                     new OpenSlotModel()
-                     {
-                         Name = x.Name,
-                         Dates = x.Schedules.FirstOrDefault().Dates
+            return slots.Select(x =>
+                 new OpenSlotModel()
+                 {
+                     Name = x.Name,
+                     Dates = x.Schedules.FirstOrDefault().Dates
                          .Where(x => x.Slots.Any(s => s.Taken != true && s.Reserved != true))
                          .Select(y => new Models.ScheduleDate()
                          {
                              DateName = y.DateName,
                              Dt = y.Dt,
                              WeekName = y.WeekName,
-                             Slots = y.Slots.Where(s => s.Taken != true && s.Reserved != true).Select(z => new Models.Slot()
-                             {
-                                 Value = z.Value
-
-                             })
+                             Slots = y.Slots
+                                .Where(s => s.Taken != true && s.Reserved != true)
+                                .Select(z => new Models.Slot()
+                                {
+                                    Value = z.Value
+                                })
+                                .ToList()
                          })
-                     }
-                 ).AsEnumerable();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Failed to map SlotResponse to OpenSlotModel");
-                return new List<OpenSlotModel>();
-            }
+                         .ToList()
+                 }
+             ).ToList();
         }
     }
 }

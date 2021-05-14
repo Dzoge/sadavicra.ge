@@ -9,7 +9,7 @@ namespace AcraWebsite.Models
     {
         public string Name { get; set; }
 
-        public IEnumerable<ScheduleDate> Dates { get; set; }
+        public List<ScheduleDate> Dates { get; set; }
     }
 
     public class Slot
@@ -25,6 +25,6 @@ namespace AcraWebsite.Models
 
         public string DateName { get; set; }
 
-        public IEnumerable<Slot> Slots { get; set; }
+        public List<Slot> Slots { get; set; }
     }
 }

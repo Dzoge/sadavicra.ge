@@ -1,31 +1,55 @@
 ﻿using System;
 using System.Globalization;
+using System.Linq;
 
 namespace AcraWebsite.Models
 {
+    public class FilterViewModel
+    {
+        public string VaccineId { get; set; }
+        public string RegionId { get; set; }
+        public string Date { get; set; }
+        public DateTime? DateValue { get; set; }
+    }
+
     public class HomeViewModel
     {
-        public string FilterVaccineId { get; }
-        public string FilterRegionId { get; }
-        public string FilterDate { get; set; }
+        public CultureInfo CultureInfo { get; }
+        public FilterViewModel Filter { get; }
+        public LastUpdateDtSettings LastUpdateDtSettings { get; private set; }
+        public BookingDataCache Cache { get; private set; }
 
         public HomeViewModel(string vaccineFilter, string regionFilter, string date)
         {
-            if (IsFilterParameterValueValid(vaccineFilter))
-                FilterVaccineId = vaccineFilter;
-
-            if (IsFilterParameterValueValid(regionFilter))
-                FilterRegionId = regionFilter;
-
-            if (IsFilterParameterValueValid(date))
-                FilterDate = date;
-
+            CultureInfo = new CultureInfo("ka-ge");
             LastUpdateDtSettings = new LastUpdateDtSettings();
+            Filter = GenerateFilter(vaccineFilter, regionFilter, date);
         }
 
-        public CultureInfo CultureInfo { get; set; }
-        public LastUpdateDtSettings LastUpdateDtSettings { get; set; }
-        public BookingDataCache Cache { get; set; }
+        public void SetBookingData(BookingDataCache bookingDataCache)
+        {
+            if (bookingDataCache == null)
+                return;
+
+            Cache = bookingDataCache;
+            GenerateLastUpdateStatus(Cache.LastUpdateDt);
+        }
+
+        public int GetAvailableCount(Vaccine vaccine, Municipality municipality)
+        {
+            return Cache.GetSlotData(vaccine.Id, municipality.Id, Filter.DateValue)
+                .SelectMany(sd => sd.Dates)
+                .SelectMany(d => d.Slots)
+                .Count();
+        }
+
+        public int GetAvailableCount(Vaccine vaccine, Municipality municipality, VaccineLocation location)
+        {
+            return Cache.GetSlotData(vaccine.Id, municipality.Id, location.BranchId, Filter.DateValue)
+                .SelectMany(sd => sd.Dates)
+                .SelectMany(d => d.Slots)
+                .Count();
+        }
 
         private bool IsFilterParameterValueValid(string value)
         {
@@ -39,10 +63,9 @@ namespace AcraWebsite.Models
             return true;
         }
 
-        internal void GenerateLastUpdateStatus(DateTimeOffset? lastUpdateDt)
+        private void GenerateLastUpdateStatus(DateTimeOffset lastUpdateDt)
         {
-            if (!lastUpdateDt.HasValue) return;
-            LastUpdateDtSettings.LastUpdateDtDiffInMinutes = (int)((DateTimeOffset.Now - lastUpdateDt.Value).TotalMinutes);
+            LastUpdateDtSettings.LastUpdateDtDiffInMinutes = (int)((DateTimeOffset.Now - lastUpdateDt).TotalMinutes);
 
             if (LastUpdateDtSettings.LastUpdateDtDiffInMinutes >= 10)
             {
@@ -57,25 +80,24 @@ namespace AcraWebsite.Models
                 LastUpdateDtSettings.Emoji = "😬 ";
             }
         }
-    }
-    public class LastUpdateDtSettings
-    {
-        public string FontSize { get; set; } = "12";
-        public string ClassName { get; set; } = "secondary";
-        public string Emoji { get; set; }
-        public int LastUpdateDtDiffInMinutes { get; set; }
 
-        public bool LastUpdateIsTooOld => LastUpdateDtDiffInMinutes >= 10;
-        public bool LastUpdateIsBearable => LastUpdateDtDiffInMinutes >= 5;
-
-
-        public string LastUpdateDtDisplayText
+        private FilterViewModel GenerateFilter(string vaccineFilter, string regionFilter, string date)
         {
-            get
+            var filter = new FilterViewModel();
+
+            if (IsFilterParameterValueValid(vaccineFilter))
+                filter.VaccineId = vaccineFilter;
+
+            if (IsFilterParameterValueValid(regionFilter))
+                filter.RegionId = regionFilter;
+
+            if (IsFilterParameterValueValid(date))
             {
-                var differenceInHours = Math.Round(TimeSpan.FromMinutes(LastUpdateDtDiffInMinutes).TotalHours, 0);
-                return LastUpdateDtDiffInMinutes >= 60 ? $"{differenceInHours} საათის" : $"{LastUpdateDtDiffInMinutes} წუთის";
+                filter.Date = date;
+                filter.DateValue = DateTime.ParseExact(date, "yyyy-MM-dd", CultureInfo.InvariantCulture);
             }
+
+            return filter;
         }
     }
 }
