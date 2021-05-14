@@ -4,6 +4,17 @@
 function filterRegions(regionId) {
     filterElems('region', regionId);
 }
+function filterDate(date) {
+    var filterValue = "";
+    if (!!date) {
+        var dateValue = new Date(date);
+        var day = ('0' + dateValue.getDate()).substr(-2);
+        var month = ('0' + (dateValue.getMonth() + 1)).substr(-2);
+        var year = dateValue.getFullYear();
+        var filterValue = year + '-' + month + '-' + day;
+    }
+    filterElems('date', filterValue);
+}
 function filterElems(dataSetName, value) {
     $('[data-' + dataSetName + ']').each(function () {
         var elem = this;
@@ -45,6 +56,9 @@ $('#selectRegion').on('change', function () {
 $('#selectVaccine').on('change', function () {
     filterVaccines(this.value);
 });
+$('#selectDate').on('change', function () {
+    filterDate(this.value);
+});
 
 
 $(document).on("click", ".js-slots-toggle", function () {
@@ -69,6 +83,7 @@ $(document).on("click", ".js-slots-toggle", function () {
         $.get("/home/getslots", request)
             .done(function (response) {
                 $slotsContainerContent.html(response);
+                $('#selectDate').trigger('change');
                 $slotsContainer.slideDown();
                 $locationWrap.addClass('open');
             })

@@ -110,6 +110,7 @@ body {
         -webkit-appearance: none;
         -moz-appearance: none;
         width: auto;
+        background: white;
     }
 
 .dropdown__arrow {
@@ -126,6 +127,22 @@ body {
         transform: rotate(180deg);
         transition: all .3s ease;
     }
+
+.datepicker input[type="date"] {
+    min-width: 200px;
+    height: 38px;
+    padding: 0 5px 0 15px;
+    outline: none;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 4px;
+    font-size: 14px;
+    color: #212529;
+    background: white;
+}
+
+.datepicker:not(:only-child) {
+    margin-left: 15px;
+}
 
 .card-subtitle ul {
     margin-bottom: 0;
@@ -322,6 +339,18 @@ body {
             margin-left: 0;
             margin-top: 10px;
         }
+    
+    .datepicker:not(:only-child) {
+        margin-left: 0;
+        margin-top: 15px;
+        width: 100%;
+    }
+
+    .datepicker input[type="date"] {
+        min-width: initial;
+        width: 100%;
+        font-size: 13px;
+    }
 
     .location-head .card-text {
         width: 100%;
