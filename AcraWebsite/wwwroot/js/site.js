@@ -16,19 +16,12 @@ function filterDate(date) {
     filterElems('date', filterValue);
 }
 function filterElems(dataSetName, value) {
-    $('[data-' + dataSetName + ']').each(function () {
-        var elem = this;
-        var sholdShow = !value
-            ? true
-            : elem.dataset[dataSetName] == value;
-        elem.classList.toggle('hide', !sholdShow);
-    });
-
     var url = new URL(window.location.href);
     url.searchParams.delete(dataSetName);
     if (value)
         url.searchParams.set(dataSetName, value);
     history.replaceState({}, document.title, url.toString());
+    window.location.reload(true);
 }
 function appendQueryParameter(url, name, value) {
     if (url.length === 0) {
@@ -76,14 +69,14 @@ $(document).on("click", ".js-slots-toggle", function () {
         $locationWrap.addClass('loading');
 
         var request = {
-            "regionId": $toggle.data("region-id"),
+            "municipalityId": $toggle.data("municipality-id"),
             "serviceId": $toggle.data("service-id"),
-            "branchId": $toggle.data("branch-id")
+            "branchId": $toggle.data("branch-id"),
+            "date": $('#selectDate').val()
         };
         $.get("/home/getslots", request)
             .done(function (response) {
                 $slotsContainerContent.html(response);
-                $('#selectDate').trigger('change');
                 $slotsContainer.slideDown();
                 $locationWrap.addClass('open');
             })

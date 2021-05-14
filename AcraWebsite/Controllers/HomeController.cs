@@ -25,17 +25,15 @@ namespace AcraWebsite.Controllers
         public IActionResult Index(string vaccine = null, string region = null, string date = null)
         {
             var model = new HomeViewModel(vaccine, region, date);
-            model.Cache = _bookingDataOverviewCache.GetAllData();
-            model.CultureInfo = new CultureInfo("ka-ge");
-            model.GenerateLastUpdateStatus(model.Cache?.LastUpdateDt);
+            model.SetBookingData(_bookingDataOverviewCache.GetAllData());
             return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult GetSlots(string branchId, string regionId, string serviceId)
+        public IActionResult GetSlots(string branchId, string municipalityId, string serviceId, DateTime? date)
         {
             var data = _bookingDataOverviewCache.GetAllData();
-            var slots = data.GetSlotData(serviceId, regionId, branchId);
+            var slots = data.GetSlotData(serviceId, municipalityId, branchId, date);
             return PartialView("~/Views/Shared/Partials/_OpenSlotsPartial.cshtml", slots);
         }
 
