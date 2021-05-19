@@ -150,7 +150,7 @@ namespace AcraWebsite.Services
                                 continue;
 
                             var openSlots = MapSlotResponse(slots);
-                            var distinctSlotDates = openSlots
+                            var distinctSlotDates = openSlots.Where(s => s.Dates != null)
                                 .SelectMany(s => s.Dates)
                                 .Where(d => d.Dt.HasValue)
                                 .Select(d => d.Dt.Value.Date)
@@ -232,9 +232,9 @@ namespace AcraWebsite.Services
                  new OpenSlotModel()
                  {
                      Name = x.Name,
-                     Dates = x.Schedules.FirstOrDefault().Dates
-                         .Where(x => x.Slots.Any(s => s.Taken != true && s.Reserved != true))
-                         .Select(y => new Models.ScheduleDate()
+                     Dates = x.Schedules?.FirstOrDefault()?.Dates
+                         ?.Where(x => x.Slots.Any(s => s.Taken != true && s.Reserved != true))
+                         ?.Select(y => new Models.ScheduleDate()
                          {
                              DateName = y.DateName,
                              Dt = y.Dt,
@@ -247,7 +247,7 @@ namespace AcraWebsite.Services
                                 })
                                 .ToList()
                          })
-                         .ToList()
+                         ?.ToList()
                  }
              ).ToList();
         }

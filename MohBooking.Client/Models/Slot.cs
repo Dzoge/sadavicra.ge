@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text.Json.Serialization;
 
 namespace MohBooking.Client
@@ -78,14 +79,24 @@ namespace MohBooking.Client
         //[JsonPropertyName("dateTicks")]
         //public long? DateTicks { get; set; }
 
-        [JsonPropertyName("date")]
-        public DateTime? Dt { get; set; }
+
 
         [JsonPropertyName("weekName")]
         public string WeekName { get; set; }
 
         [JsonPropertyName("dateName")]
         public string DateName { get; set; }
+        //[JsonPropertyName("date")]
+        public DateTime? Dt
+        {
+            get
+            {
+                DateTime convertedDt;
+                return DateTime.TryParseExact(DateName, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out convertedDt)
+                     ? convertedDt
+                     : (DateTime?)null;
+            }
+        }
 
         [JsonPropertyName("slots")]
         public List<Slot> Slots { get; set; }
