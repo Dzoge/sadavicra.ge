@@ -8,7 +8,6 @@ namespace MohBooking.Client
 {
     public class MohBookingNewClient : IMohBookingNewClient
     {
-        private static Random _random = new Random();
         private readonly HttpClient _httpClient;
 
         public MohBookingNewClient(HttpClient httpClient)
