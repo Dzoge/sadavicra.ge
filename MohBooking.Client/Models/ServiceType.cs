@@ -14,34 +14,37 @@ namespace MohBooking.Client
         [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonPropertyName("limit")]
-        public int? Limit { get; set; }
+        [JsonPropertyName("description")]
+        public string Description { get; set; }
 
-        //[JsonPropertyName("minAge")]
-        //public int MinAge { get; set; }
+        //[JsonPropertyName("limit")]
+        //public int? Limit { get; set; }
 
-        [JsonPropertyName("allowed")]
-        public int? Allowed { get; set; }
+        ////[JsonPropertyName("minAge")]
+        ////public int MinAge { get; set; }
 
-        //[JsonPropertyName("published")]
-        //public bool Published { get; set; }
+        //[JsonPropertyName("allowed")]
+        //public int? Allowed { get; set; }
 
-        //[JsonPropertyName("sameProvider")]
-        //public bool SameProvider { get; set; }
+        ////[JsonPropertyName("published")]
+        ////public bool Published { get; set; }
 
-        //[JsonPropertyName("allowForeigner")]
-        //public bool AllowForeigner { get; set; }
+        ////[JsonPropertyName("sameProvider")]
+        ////public bool SameProvider { get; set; }
 
-        //[JsonPropertyName("ignoreAgeWhenDoctor")]
-        //public bool IgnoreAgeWhenDoctor { get; set; }
+        ////[JsonPropertyName("allowForeigner")]
+        ////public bool AllowForeigner { get; set; }
 
-        [JsonPropertyName("minBookingDays")]
-        public int? MinBookingDays { get; set; }
+        ////[JsonPropertyName("ignoreAgeWhenDoctor")]
+        ////public bool IgnoreAgeWhenDoctor { get; set; }
 
-        [JsonPropertyName("maxBookingDays")]
-        public int? MaxBookingDays { get; set; }
+        //[JsonPropertyName("minBookingDays")]
+        //public int? MinBookingDays { get; set; }
 
-        //[JsonPropertyName("immunizationID")]
-        //public string ImmunizationId { get; set; }
+        //[JsonPropertyName("maxBookingDays")]
+        //public int? MaxBookingDays { get; set; }
+
+        ////[JsonPropertyName("immunizationID")]
+        ////public string ImmunizationId { get; set; }
     }
 }

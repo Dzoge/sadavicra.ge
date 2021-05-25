@@ -1,19 +1,23 @@
 ﻿@model Vaccine
-@{
-    var lines = Model?.Description?
-        .Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries)
-        .Where(t => !String.IsNullOrWhiteSpace(t))
-        .ToArray();
-}
+@*@{
+        var lines = Model?.Description?
+            .Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries)
+            .Where(t => !String.IsNullOrWhiteSpace(t))
+            .ToArray();
+    }
 
-@if (lines?.Length > 0)
-{
-    <h6 class="card-subtitle text-danger mt-4">
-        <ul>
-            @foreach (var line in lines)
-            {
-                <li>@(line)</li>
-            }
-        </ul>
-    </h6>
-}
+    @if (lines?.Length > 0)
+    {
+        <h6 class="card-subtitle text-danger mt-4">
+            <ul>
+                @foreach (var line in lines)
+                {
+                    <li>@(line)</li>
+                }
+            </ul>
+        </h6>
+    }*@
+
+<h6 class="card-subtitle text-danger mt-4">
+    @(Html.Raw(Model.Description))
+</h6>

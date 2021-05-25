@@ -16,6 +16,7 @@ namespace AcraWebsite.Services
         public const int _defaultSleepIntervalMs = 100;
 
         private readonly IMohBookingClient _mohBookingClient;
+        private readonly IMohBookingNewClient _mohBookingNewClient;
         private readonly ILogger<BookingDataCacheService> _logger;
         private readonly object _dataLocker;
 
@@ -24,10 +25,12 @@ namespace AcraWebsite.Services
 
         public BookingDataCacheService(
             IMohBookingClient mohBookingClient,
+            IMohBookingNewClient mohBookingNewClient,
             ILogger<BookingDataCacheService> logger
         )
         {
             _mohBookingClient = mohBookingClient;
+            _mohBookingNewClient = mohBookingNewClient;
             _logger = logger;
             _dataLocker = new object();
             InitiateDataReload();
@@ -92,7 +95,7 @@ namespace AcraWebsite.Services
             var model = new BookingDataCache();
             model.Vaccines = new List<Vaccine>();
 
-            var vaccines = await _mohBookingClient.GetServicesAsync();
+            var vaccines = await _mohBookingNewClient.GetServicesAsync();
             Thread.Sleep(sleepInteval);
 
             foreach (var vaccine in vaccines)
@@ -107,9 +110,10 @@ namespace AcraWebsite.Services
                         .Replace("(", String.Empty)
                         .Replace(")", String.Empty)
                         .Trim(),
-                    Municipalities = new List<Municipality>()
+                    Municipalities = new List<Municipality>(),
+                    Description = vaccine.Description
                 };
-                vaccineModel.Description = GenerateVaccineDescription(vaccineModel.Name);
+                //vaccineModel.Description = GenerateVaccineDescription(vaccineModel.Name);
 
                 model.Vaccines.Add(vaccineModel);
 
